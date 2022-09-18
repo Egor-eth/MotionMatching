@@ -1,13 +1,12 @@
 #!/bin/bash
-PROJECT=${1:-RayTracing}
-BUILD_TYPE=${2:-rel}
+PROJECT=${1:-MotionMatching}
+BUILD_TYPE=${2:-dev}
 REBUILD=${3:-no}
-ECS_CODEGEN=${4:-no}
+ECS_CODEGEN=${4:-yes}
 CMAKE=${5:-yes}
 CWD=$(pwd)
 
-cd ..
-cd Builds/unix
+cd Builds
 
 if [ $REBUILD = "yes" ]
 then
@@ -16,16 +15,13 @@ fi
 
 if [ $ECS_CODEGEN = "yes" ]
 then
-    ./ECSCodeGen/ECSCodeGen-rel.exe $CWD/Common/Sources/Systems $CWD/Projects/$PROJECT/Sources/Systems
-fi
-cd ../../Projects
-if [ $CMAKE = "yes" ]
-then
-    export CC=/usr/bin/clang-6.0
-    export CXX=/usr/bin/clang++-6.0
-    cmake -G Ninja -DPROJECT=$PROJECT -DBUILD_TYPE=$BUILD_TYPE -B ../Builds/unix/$PROJECT/$BUILD_TYPE
+    ./ECSCodeGen/ECSCodeGen.exe $CWD/Common/Sources/Systems $CWD/sources/$PROJECT/Systems
 fi
 
-cd ../Builds/unix/$PROJECT/$BUILD_TYPE 
-time -p ninja -j $(nproc)
-mv $PROJECT-$BUILD_TYPE.exe ..
+cd ../sources
+if [ $CMAKE = "yes" ]
+then
+    export CC=/usr/bin/clang
+    export CXX=/usr/bin/clang++
+    cmake -G Ninja -DPROJECT=$PROJECT -DBUILD_TYPE=$BUILD_TYPE -B ../Builds/$PROJECT/$BUILD_TYPE
+fi
