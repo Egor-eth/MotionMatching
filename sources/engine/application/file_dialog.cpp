@@ -1,4 +1,5 @@
 #include "application/file_dialog.h"
+#ifdef _WIN32
 #include <windows.h>
 
 char *add_str(char *buf, const std::string &str)
@@ -35,10 +36,18 @@ bool get_filename_impl(BOOL (*open_file)(OPENFILENAME*), char *file, int file_si
   ofn.Flags = flags;
   return open_file(&ofn);
 }
+
+#endif
 bool get_open_file_impl(char *file, int file_size, const std::pair<std::string, std::string> &extension)
 {
+#ifdef _WIN32
   return get_filename_impl(GetOpenFileName, file, file_size, OFN_PATHMUSTEXIST|OFN_FILEMUSTEXIST, {extension});
+#else
+  return false;
+#endif
 }
+
+
 bool get_open_file(std::string &path, const std::pair<std::string, std::string> &extension)
 {
   constexpr int N = 255;
@@ -64,6 +73,7 @@ bool get_open_file(char *path, int max_path, const std::pair<std::string, std::s
 }
 bool get_save_file_impl(char *file, int file_size, const std::string &extension)
 {
+#ifdef _WIN32
   bool success = get_filename_impl(GetSaveFileName, file, file_size, OFN_PATHMUSTEXIST|OFN_HIDEREADONLY, {{extension, extension}});
   if (success)
   {
@@ -72,6 +82,9 @@ bool get_save_file_impl(char *file, int file_size, const std::string &extension)
     sprintf(file + strlen(file), "%s", extension.c_str());
   }
   return success;
+#else
+  return false;
+#endif
 }
 bool get_save_file(std::string &path, const std::string &extension)
 {

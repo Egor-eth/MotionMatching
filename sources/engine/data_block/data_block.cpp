@@ -197,7 +197,8 @@ static bool parse(Stream &stream, bool &value)
     bool val;
   };
   BoolVariant variants[] = {{"true%n", 4, true}, {"yes%n", 3, true}, {"false%n", 5, false}, {"no%n", 2, false}};
-  for (int i = 0; i < 4; i++)
+  constexpr int N = sizeof(variants) / sizeof(BoolVariant);
+  for (int i = 0; i < N; i++)
   {
     sscanf(buf, variants[i].fmt, &n);
     if (n == variants[i].size)
@@ -231,9 +232,9 @@ string_start:
       {
         stream.get();
         c = stream.peek();
-        constexpr int N = 4;
-        pair<char, char> specialCharacters[N] = 
-            {{'"', '\"'}, {'n', '\n'}, {'\\', '\\'}, {'\'', '\''}};
+        pair<char, char> specialCharacters[] = 
+            {{'"', '\"'}, {'n', '\n'}, {'\\', '\\'}, {'\'', '\''}, {'r', '\r'}};
+        constexpr int N = sizeof(specialCharacters) / sizeof(pair<char, char>);
         bool found = false;
         for (int i = 0; i < N; i++)
           if (c == specialCharacters[i].first)
@@ -244,7 +245,7 @@ string_start:
           }
         if (!found)
         {
-          debug_error("unexception special character %c in string %s", c, value.c_str());
+          debug_error("unexcepted special character %c in string %s", c, value.c_str());
           continue;
         }
       }
@@ -307,7 +308,7 @@ static bool add_block(Stream &stream, DataBlock &block, const string &varName, c
     printf("added block %s:%s\n", varName.c_str(), varType.c_str());
   else
     printf("added block %s\n", varName.c_str()); */
-  return read_blk(stream, *nextBlock);;
+  return read_blk(stream, *nextBlock);
 }
 
 static bool read_blk(Stream &stream, DataBlock &block)

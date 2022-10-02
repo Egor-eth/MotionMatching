@@ -1,4 +1,7 @@
 #pragma once
+#ifdef __linux__
+#include <cstddef>
+#endif
 
 class tmp_allocator
 {

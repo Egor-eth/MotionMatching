@@ -2,6 +2,9 @@
 #include "common.h"
 #include "global_uniform.h"
 #include "glad/glad.h"
+#ifdef __linux__
+#include <cstring>
+#endif
 
 static map<string, UniformBuffer> nameToArray;
 

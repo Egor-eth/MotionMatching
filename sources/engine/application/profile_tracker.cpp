@@ -2,6 +2,9 @@
 #include <ostream>
 #include <fstream>
 #include "profile_tracker.h"
+#ifdef __linux__
+#include <algorithm>
+#endif
 
 void ProfileTracker::stop()
 {

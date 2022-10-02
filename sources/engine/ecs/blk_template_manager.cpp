@@ -5,6 +5,7 @@
 #include "manager/entity_id.h"
 #include <filesystem>
 #include <map>
+using std::string;
 namespace fs = filesystem;
 namespace ecs
 { 

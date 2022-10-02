@@ -1,0 +1,1565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>MotionMatching-RelWithDebInfo@sources</name>
+	<comment></comment>
+	<projects></projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.make.core.makeBuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.append_environment</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enabledIncrementalBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.command</key>
+					<value>/usr/bin/make</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.inc</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.arguments</key>
+					<value>-j8</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>/home/egor/Desktop/gl/MotionMatching/sources</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.environment</key>
+					<value>VERBOSE=1|CMAKE_NO_VERBOSE=1|</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.auto</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.clean</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.location</key>
+					<value>/home/egor/Desktop/gl/MotionMatching/sources</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.core.errorOutputParser</key>
+					<value>org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.make.core.ScannerConfigBuilder</name>
+			<arguments/>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.make.core.makeNature</nature>
+		<nature>org.eclipse.cdt.make.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[Subprojects]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/allocator_eastl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/allocator_eastl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/assert.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/assert.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/atomic.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/atomic.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/fixed_pool.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/fixed_pool.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/hashtable.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/hashtable.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/intrusive_list.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/intrusive_list.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/numeric_limits.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/numeric_limits.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/red_black_tree.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/red_black_tree.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/string.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/string.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/thread_support.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/CMakeFiles/eastl.dir/source/thread_support.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/ecs_core.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/ecs_core.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/ecs_event.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/ecs_event.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/ecs_event_impl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/ecs_event_impl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/archetype.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/archetype.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/component_container.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/component_container.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/component_instance.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/component_instance.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/entity_id.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/entity_id.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/entity_manager.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/entity_manager.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/entity_pull.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/entity_pull.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/system_description.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/system_description.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/system_sort.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/system_sort.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/type_info.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/manager/type_info.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/template.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/CMakeFiles/ecs.dir/template.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/application.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/application/application.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/application_metainfo.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/application/application_metainfo.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/context.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/application/context.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/file_dialog.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/application/file_dialog.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/profile_tracker.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/application/profile_tracker.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/data_block.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/data_block/data_block.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/blk_template_manager.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/ecs/blk_template_manager.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/component_editor.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/ecs/component_editor.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/ecs_scene.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/ecs/ecs_scene.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/scene_loader.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/ecs/scene_loader.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/tmp_allocator.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/memory/tmp_allocator.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/tmp_allocator_tests.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/memory/tmp_allocator_tests.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/thread_pool.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/parallel/thread_pool.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/debug_arrow.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/debug_arrow.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/direction_light.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/direction_light.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/frustum.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/frustum.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/global_uniform.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/global_uniform.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/material.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/material.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/mesh.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/mesh.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/mesh_render.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/mesh_render.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/postfx.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/postfx.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/binary_shader.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/shader/binary_shader.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/shader.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/shader/shader.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/shader_codegen.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/shader/shader_codegen.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/shader_compile.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/shader/shader_compile.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/shader_factory.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/shader/shader_factory.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/skybox.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/skybox.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/sprite.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/sprite.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/cube_map_texture.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/texture/cube_map_texture.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/stb.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/texture/stb.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/texture.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/texture/texture.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/texture2d.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/texture/texture2d.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/texture2d_array.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/texture/texture2d_array.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/texture3d.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/render/texture/texture3d.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/button.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/ui/button.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/asset.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/resources/asset.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/fbx_importer.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/resources/fbx_importer.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/resources.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/resources/resources.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/glad.c.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/driver/glad.c.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/gpu_profile.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/profiler/gpu_profile.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/profiler.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/profiler/profiler.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/serialization.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/serialization/serialization.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/camera.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/camera.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/common.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/common.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/input.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/input.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/main.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/main.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/transform.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/transform.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/transform2d.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/CMakeFiles/engine.dir/transform2d.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/ecs_camera.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/cameras/ecs_camera.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/common_ui.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/UI/common_ui.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/editor.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/UI/editor.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/entity_viewer.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/UI/entity_viewer.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/file_dialog.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/UI/file_dialog.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/profiler.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/UI/profiler.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/render.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/render.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/shader_reload.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/CMakeFiles/common_systems.dir/common/shader_reload.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/imgui.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/CMakeFiles/imgui.dir/imgui.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/imgui_demo.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/imgui_draw.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/imgui_impl_opengl3.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/CMakeFiles/imgui.dir/imgui_impl_opengl3.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/imgui_impl_sdl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/CMakeFiles/imgui.dir/imgui_impl_sdl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/imgui_widgets.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/cover_tree.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AccelerationStruct/cover_tree.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/kd_tree.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AccelerationStruct/kd_tree.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/vp_tree.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AccelerationStruct/vp_tree.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_cadr.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationDatabase/animation_cadr.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_channel.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationDatabase/animation_channel.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_clip.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationDatabase/animation_clip.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_database.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationDatabase/animation_database.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_feature.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationDatabase/animation_feature.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_preprocess.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationDatabase/animation_preprocess.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_tree_data.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationTree/animation_tree_data.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_tree_iterator.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationTree/animation_tree_iterator.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animaton_tree.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/AnimationTree/animaton_tree.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/motion_matching_brute_force.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/MotionMatching/motion_matching_brute_force.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/motion_matching_trees.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/MotionMatching/motion_matching_trees.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/animation.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_ik.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/animation_ik.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_index.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/animation_index.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_player.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/animation_player.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_tag.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Animation/animation_tag.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/animation_player.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/animation_player.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/motion_matching.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/motion_matching.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/person_controller.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/person_controller.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/render_system.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/render_system.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/start_scene.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/start_scene.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/test_recorder.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/test_recorder.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/tester_controller.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/tester_controller.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/third_person_controller.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/third_person_controller.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MotionMatching/Object Libraries/ui_render.inl.cpp.o</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/CMakeFiles/MotionMatchingLib.dir/Systems/ui_render.inl.cpp.o</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/allocator_eastl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/allocator_eastl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/assert.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/assert.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/atomic.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/atomic.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/fixed_pool.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/fixed_pool.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/hashtable.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/hashtable.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/intrusive_list.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/intrusive_list.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/numeric_limits.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/numeric_limits.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/red_black_tree.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/red_black_tree.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/string.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/string.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Source Files/thread_support.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/eastl/source/thread_support.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] eastl/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/ecs_core.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/ecs_core.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/ecs_event.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/ecs_event.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/ecs_event_impl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/ecs_event_impl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/archetype.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/archetype.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/component_container.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/component_container.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/component_instance.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/component_instance.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/entity_id.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/entity_id.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/entity_manager.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/entity_manager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/entity_pull.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/entity_pull.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/system_description.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/system_description.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/system_sort.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/system_sort.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/type_info.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/manager/type_info.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Source Files/template.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/ecs/template.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] ecs/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/application.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/application/application.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/application_metainfo.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/application/application_metainfo.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/context.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/application/context.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/file_dialog.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/application/file_dialog.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/profile_tracker.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/application/profile_tracker.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/data_block.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/data_block/data_block.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/blk_template_manager.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/ecs/blk_template_manager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/component_editor.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/ecs/component_editor.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/ecs_scene.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/ecs/ecs_scene.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/scene_loader.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/ecs/scene_loader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/tmp_allocator.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/memory/tmp_allocator.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/tmp_allocator_tests.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/memory/tmp_allocator_tests.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/thread_pool.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/parallel/thread_pool.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/debug_arrow.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/debug_arrow.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/direction_light.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/direction_light.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/frustum.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/frustum.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/global_uniform.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/global_uniform.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/material.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/material.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/mesh.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/mesh.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/mesh_render.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/mesh_render.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/postfx.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/postfx.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/binary_shader.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/shader/binary_shader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/shader.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/shader/shader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/shader_codegen.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/shader/shader_codegen.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/shader_compile.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/shader/shader_compile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/shader_factory.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/shader/shader_factory.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/skybox.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/skybox.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/sprite.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/sprite.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/cube_map_texture.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/texture/cube_map_texture.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/stb.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/texture/stb.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/texture.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/texture/texture.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/texture2d.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/texture/texture2d.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/texture2d_array.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/texture/texture2d_array.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/texture3d.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/render/texture/texture3d.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/button.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/ui/button.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/asset.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/resources/asset.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/fbx_importer.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/resources/fbx_importer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/resources.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/resources/resources.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/glad.c</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/driver/glad.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/gpu_profile.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/profiler/gpu_profile.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/profiler.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/profiler/profiler.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/serialization.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/serialization/serialization.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/camera.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/camera.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/common.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/common.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/input.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/input.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/main.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/main.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/transform.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/transform.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Source Files/transform2d.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/engine/transform2d.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] engine/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/ecs_camera.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/cameras/ecs_camera.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/common_ui.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/UI/common_ui.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/editor.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/UI/editor.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/entity_viewer.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/UI/entity_viewer.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/file_dialog.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/UI/file_dialog.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/profiler.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/UI/profiler.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/render.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/render.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Source Files/shader_reload.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/common_systems/common/shader_reload.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] common_systems/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files/imgui.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/imgui.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files/imgui_demo.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/imgui_demo.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files/imgui_draw.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/imgui_draw.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files/imgui_impl_opengl3.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/imgui_impl_opengl3.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files/imgui_impl_sdl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/imgui_impl_sdl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Source Files/imgui_widgets.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/3rd_party/imgui/imgui_widgets.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] imgui/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/cover_tree.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AccelerationStruct/cover_tree.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/kd_tree.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AccelerationStruct/kd_tree.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/vp_tree.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AccelerationStruct/vp_tree.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_cadr.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationDatabase/animation_cadr.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_channel.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationDatabase/animation_channel.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_clip.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationDatabase/animation_clip.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_database.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationDatabase/animation_database.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_feature.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationDatabase/animation_feature.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_preprocess.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationDatabase/animation_preprocess.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_tree_data.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationTree/animation_tree_data.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_tree_iterator.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationTree/animation_tree_iterator.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animaton_tree.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/AnimationTree/animaton_tree.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/motion_matching_brute_force.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/MotionMatching/motion_matching_brute_force.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/motion_matching_trees.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/MotionMatching/motion_matching_trees.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/animation.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_ik.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/animation_ik.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_index.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/animation_index.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_player.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/animation_player.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_tag.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Animation/animation_tag.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/animation_player.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/animation_player.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/motion_matching.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/motion_matching.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/person_controller.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/person_controller.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/render_system.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/render_system.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/start_scene.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/start_scene.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/test_recorder.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/test_recorder.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/tester_controller.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/tester_controller.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/third_person_controller.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/third_person_controller.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Source Files/ui_render.inl.cpp</name>
+			<type>1</type>
+			<location>/home/egor/Desktop/gl/MotionMatching/sources/MotionMatching/Systems/ui_render.inl.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] MotionMatchingLib/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

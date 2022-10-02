@@ -1,4 +1,3 @@
-
 #include "tmp_allocator.h"
 #include <eastl/vector.h>
 #include <application/time.h>

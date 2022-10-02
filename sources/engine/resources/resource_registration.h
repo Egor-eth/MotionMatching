@@ -10,7 +10,8 @@ Asset<T> create_new_asset(const filesystem::path &path)
   AssetImplementation<T> *asset = new AssetImplementation<T>();
 
   asset->name = asset->asset.asset_name(path);
-  asset->path = meta_data_asset ? path.string() + ".meta" : path;
+  const filesystem::path s = path.string() + ".meta";
+  asset->path = meta_data_asset ? s : path;
   asset->edited = true;
   asset->asset.after_construct(asset->path);
 
@@ -62,7 +63,8 @@ Asset<T> create_exists_asset(const filesystem::path &path)
 
   constexpr const string_view &typeName = nameOf<T>::value;
   auto &resourcesMap = Resources::instance().assets[typeName];
-  const filesystem::path &pathToAsset = meta_data_asset ? path.string() + ".meta" : path;
+  const filesystem::path s = path.string() + ".meta";
+  const filesystem::path &pathToAsset = meta_data_asset ? s : path;
 
   ifstream file(pathToAsset, ios::binary);
   string name;

@@ -3,6 +3,7 @@ set(PROJECT_NAME MotionMatching)
 
 include(sdl2.cmake)
 include(assimp.cmake)
+include(bullet.cmake)
 
 include(libs.cmake)
 

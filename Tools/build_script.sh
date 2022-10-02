@@ -23,5 +23,7 @@ if [ $CMAKE = "yes" ]
 then
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
-    cmake -G Ninja -DPROJECT=$PROJECT -DBUILD_TYPE=$BUILD_TYPE -B ../Builds/$PROJECT/$BUILD_TYPE
+    cmake -G Ninja -DGAME=$PROJECT -DBUILD_TYPE=$BUILD_TYPE -B ../Builds/$PROJECT/$BUILD_TYPE
 fi
+cd $CWD/Builds/$PROJECT/$BUILD_TYPE
+ninja

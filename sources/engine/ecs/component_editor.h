@@ -7,6 +7,28 @@
 #include "manager/entity_id.h"
 #include "utils/compile_time_string.h"
 
+bool edit_component(bool &component, const char *name, bool view_only);
+bool edit_component(int &component, const char *name, bool view_only);
+bool edit_component(uint &component, const char *name, bool view_only);
+bool edit_component(float &component, const char *name, bool view_only);
+bool edit_component(double &component, const char *name, bool view_only);
+bool edit_component(ivec2 &component, const char *name, bool view_only);
+bool edit_component(ivec3 &component, const char *name, bool view_only);
+bool edit_component(ivec4 &component, const char *name, bool view_only);
+bool edit_component(uvec2 &component, const char *name, bool view_only);
+bool edit_component(uvec3 &component, const char *name, bool view_only);
+bool edit_component(uvec4 &component, const char *name, bool view_only);
+bool edit_component(vec2 &component, const char *name, bool view_only);
+bool edit_component(vec3 &component, const char *name, bool view_only);
+bool edit_component(vec4 &component, const char *name, bool view_only);
+bool edit_component(mat2 &component, const char *name, bool view_only);
+bool edit_component(mat3 &component, const char *name, bool view_only);
+bool edit_component(mat4 &component, const char *name, bool view_only);
+bool edit_component(ecs::EntityId &component, const char *name, bool view_only);
+bool edit_component(ecs::string &component, const char *name, bool view_only);
+bool edit_component(std::string &component, const char *name, bool view_only);
+
+
 template<typename T>
 std::enable_if_t<HasReflection<T>::value, bool> edit_component(T &component, const char *, bool view_only)
 {
@@ -138,24 +160,3 @@ std::enable_if_t<is_base_of<IAsset, T>::value, bool>
   return edited;
 }
 
-
-bool edit_component(bool &component, const char *name, bool view_only);
-bool edit_component(int &component, const char *name, bool view_only);
-bool edit_component(uint &component, const char *name, bool view_only);
-bool edit_component(float &component, const char *name, bool view_only);
-bool edit_component(double &component, const char *name, bool view_only);
-bool edit_component(ivec2 &component, const char *name, bool view_only);
-bool edit_component(ivec3 &component, const char *name, bool view_only);
-bool edit_component(ivec4 &component, const char *name, bool view_only);
-bool edit_component(uvec2 &component, const char *name, bool view_only);
-bool edit_component(uvec3 &component, const char *name, bool view_only);
-bool edit_component(uvec4 &component, const char *name, bool view_only);
-bool edit_component(vec2 &component, const char *name, bool view_only);
-bool edit_component(vec3 &component, const char *name, bool view_only);
-bool edit_component(vec4 &component, const char *name, bool view_only);
-bool edit_component(mat2 &component, const char *name, bool view_only);
-bool edit_component(mat3 &component, const char *name, bool view_only);
-bool edit_component(mat4 &component, const char *name, bool view_only);
-bool edit_component(ecs::EntityId &component, const char *name, bool view_only);
-bool edit_component(ecs::string &component, const char *name, bool view_only);
-bool edit_component(std::string &component, const char *name, bool view_only);

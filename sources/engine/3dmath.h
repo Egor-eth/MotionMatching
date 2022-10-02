@@ -61,7 +61,7 @@ inline int rand_int(int max_val = RAND_MAX)
 
 inline float rand_float(float from = -1.f, float to = 1.f)
 {
-  return from + ((float)rand() / RAND_MAX) * (to - from);
+  return from + ((float)rand() / static_cast<float>(RAND_MAX)) * (to - from);
 }
 
 inline vec2 rand_vec2(float from = -1.f, float to = 1.f)
