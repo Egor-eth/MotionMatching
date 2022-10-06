@@ -6,6 +6,7 @@
 #include <cctype>
 #include "common.h"
 #include "3dmath.h"
+#include <cstring>
 
 #define OUT_VEC(vec2, vec3, vec4)\
 ostream& operator<<(ostream& os, const vec2& v)\
@@ -142,8 +143,10 @@ static bool parse(Stream &stream, vec<N, T, defaultp> &value)
   int n = 0, read = 0;
   if constexpr (is_same_v<T, float>)
   {
-    if constexpr (N == 2)
+    if constexpr (N == 2) {
       read = sscanf(stream.data(), "%f,%f%n", &value.x, &value.y, &n);
+      printf("%i", n);
+    }
     else if constexpr (N == 3)
       read = sscanf(stream.data(), "%f,%f,%f%n", &value.x, &value.y, &value.z, &n);
     else
@@ -196,14 +199,13 @@ static bool parse(Stream &stream, bool &value)
     int size;
     bool val;
   };
-  BoolVariant variants[] = {{"true%n", 4, true}, {"yes%n", 3, true}, {"false%n", 5, false}, {"no%n", 2, false}};
+  BoolVariant variants[] = {{"true", 4, true}, {"yes", 3, true}, {"false", 5, false}, {"no", 2, false}};
   constexpr int N = sizeof(variants) / sizeof(BoolVariant);
   for (int i = 0; i < N; i++)
   {
-    sscanf(buf, variants[i].fmt, &n);
-    if (n == variants[i].size)
+    if (strncmp(buf, variants[i].fmt, variants[i].size) == 0)
     {
-      stream.seek(n);
+      stream.seek(variants[i].size);
       value = variants[i].val;
       return true;
     }
@@ -254,17 +256,18 @@ string_start:
   }
   return result;
 }
+
+
+
 template<typename T>
 static bool try_parse_value(Stream &stream, DataBlock &blk, const char *varName, const char *varType)
 {
   T value;
+
   if (parse(stream, value))
   {
-    blk.add<T>(varName, value);/* 
-    if constexpr(std::is_same_v<T, unsigned char>)
-      cout << varName << ":" << varType << "=" << (bool)value << endl;
-    else
-      cout << varName << ":" << varType << "=" << value << endl; */
+    blk.add<T>(varName, value);
+
     if (read_character(stream, ';'))
       return true;
     debug_error("expects ';' after %s:%s", varName, varType);
