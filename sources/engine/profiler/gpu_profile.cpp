@@ -9,8 +9,8 @@ struct GPULabel
   bool isOpen;
 };
 
-static queue<GLuint> query_id_pull;
-static vector<GPULabel> queries;
+static std::queue<GLuint> query_id_pull;
+static std::vector<GPULabel> queries;
 
 GLuint add_qpu_query_id()
 {

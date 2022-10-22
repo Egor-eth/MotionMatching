@@ -9,7 +9,7 @@ class ProfileTracker
 {
 private:
   std::string path;
-  vector<float> times;
+  std::vector<float> times;
   size_t frameCount; 
   bool stopped;
 public:

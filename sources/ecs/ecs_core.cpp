@@ -110,6 +110,7 @@ namespace ecs
 
   EntityId EntityManager::create_entity(const Template *tmpl, ComponentInitializerList &&list)
   {
+      const char *nm = tmpl->name.c_str();
     if (!tmpl)
       return EntityId();
     if (!tmpl->archetype)
@@ -158,6 +159,7 @@ namespace ecs
       }
       found_archetype->count++;
     }
+
     send_event_immediate(eid, OnEntityCreated());
     return eid;
   }

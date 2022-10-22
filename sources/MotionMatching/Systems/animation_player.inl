@@ -69,6 +69,7 @@ EVENT(scene=game) init_animation_material(
   const ecs::OnEntityCreated &,
   Asset<Material> &material)
 {
-  if (material && !material.is_copy())
-    material = material.copy();
+  if (material && !material.is_copy()) {
+      material = material.copy();
+  }
 }

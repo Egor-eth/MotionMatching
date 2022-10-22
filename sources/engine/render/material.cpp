@@ -38,7 +38,7 @@ const Shader &Material::get_shader() const
   return shader;
 }
 
-pair<int, int> Material::get_uniform_index(const char *name, int gl_type) const
+std::pair<int, int> Material::get_uniform_index(const char *name, int gl_type) const
 {
   auto it = uniformMap.find(name);
   if (it != uniformMap.end())
@@ -62,7 +62,7 @@ int Material::get_texture_index(const char *name, int gl_type) const
   if (it != uniformMap.end())
   {
     int i =  it->second;
-    const vector<SamplerUniform> &samplers = shader.get_samplers();
+    const std::vector<SamplerUniform> &samplers = shader.get_samplers();
     if ((uint)gl_type != samplers[i].type)
     {
       debug_error("bad formats for sampler %s %d in shader %d try set", name, samplers[i].type, gl_type);
@@ -104,7 +104,7 @@ BufferField Material::get_buffer_field(const char *name) const
   return BufferField();
 }
 
-void Material::load(const filesystem::path &path, bool reload, AssetStatus &status)
+void Material::load(const std::filesystem::path &path, bool reload, AssetStatus &status)
 {
   if (!reload)
   {
@@ -130,7 +130,7 @@ void Material::load(const filesystem::path &path, bool reload, AssetStatus &stat
       }
     }
     
-    const vector<SamplerUniform> &samplers = shader.get_samplers();
+    const std::vector<SamplerUniform> &samplers = shader.get_samplers();
     for (uint i = 0; i < samplers.size(); ++i)
     {
       const SamplerUniform &sampler = samplers[i];
@@ -168,7 +168,7 @@ void Material::before_save()
       switch(field.type)
       {
         #define TYPE(T, gl_type) case gl_type: T##savable.emplace_back(field.name, \
-          vector<T>(T##s.begin() + field.vectorOffset, T##s.begin() + field.vectorOffset + field.size)); break;
+          std::vector<T>(T##s.begin() + field.vectorOffset, T##s.begin() + field.vectorOffset + field.size)); break;
         TYPES
         #undef TYPE
       }
@@ -178,7 +178,7 @@ void Material::before_save()
   #define SAMPLER(T, smp) smp##savable.clear();
   SAMPLERS
   #undef SAMPLER
-  const vector<SamplerUniform> &samplers = shader.get_samplers();
+  const std::vector<SamplerUniform> &samplers = shader.get_samplers();
   for (uint i = 0; i < samplers.size(); ++i)
   {
     const SamplerUniform &sampler = samplers[i];
@@ -191,7 +191,7 @@ void Material::before_save()
   }
 }
 
-bool select_string(const vector<const char *> &names, string &name, const char *label, bool &selecting)
+bool select_string(const std::vector<const char *> &names, std::string &name, const char *label, bool &selecting)
 {
   if (selecting)
   {
@@ -247,7 +247,7 @@ bool Material::edit()
     }
   }
   
-  const vector<SamplerUniform> &samplers = shader.get_samplers();
+  const std::vector<SamplerUniform> &samplers = shader.get_samplers();
   for (uint i = 0; i < samplers.size(); ++i)
   {
     const SamplerUniform &sampler = samplers[i];

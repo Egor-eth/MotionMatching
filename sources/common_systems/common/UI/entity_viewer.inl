@@ -47,7 +47,7 @@ SYSTEM(stage=ui;scene=game, editor,scene=debug) entity_viewer(const EditorUI &ui
             snprintf(buf, N, "%s %s", name.c_str(), typeInfo->name.c_str());
             if (ImGui::TreeNode(buf))
             {
-              bool edited = typeInfo->userInfo.componentEdition(component->get_component<void>(j), false);
+                  bool edited = typeInfo->userInfo.componentEdition(component->get_component<void>(j), false);
               if (edited)
                 ecs::send_event(eid, OnEntityEdited());
               ImGui::TreePop();

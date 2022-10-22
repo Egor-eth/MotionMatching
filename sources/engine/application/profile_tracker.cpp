@@ -6,13 +6,15 @@
 #include <algorithm>
 #endif
 
+using namespace std;
+
 void ProfileTracker::stop()
 {
   if (stopped)
     return;
   stopped = true;
-  string file_name = path.substr(0, path.size() - 4);//without .csv
-  string histo_path = file_name + "_histogramm.csv";
+  std::string file_name = path.substr(0, path.size() - 4);//without .csv
+  std::string histo_path = file_name + "_histogramm.csv";
   if (filesystem::exists(path))
   {
     for (int i = 1;true;i++)
@@ -59,7 +61,7 @@ void ProfileTracker::stop()
     }
   }
   {
-    ofstream os(path);
+    std::ofstream os(path);
     os << "frame;time;average\n";
     double sum = 0;
     int maxSamples = std::min(BinsCount, (int)times.size());

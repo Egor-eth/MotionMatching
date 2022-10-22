@@ -31,7 +31,7 @@ class Profiler
 private:
   struct AverangeTime 
   {
-    vector<float> dtChain;
+      std::vector<float> dtChain;
     int curIndex;
     float curSum;
     AverangeTime();
@@ -40,16 +40,16 @@ private:
     void add_time(float dt);
   };
 
-  map<uint64_t, AverangeTime> labelAveranges;
-  map<uint64_t, int> labelCount;
-  vector<TimeLabel> prev_frame_labels, cur_frame_labels;
+  std::map<uint64_t, AverangeTime> labelAveranges;
+  std::map<uint64_t, int> labelCount;
+  std::vector<TimeLabel> prev_frame_labels, cur_frame_labels;
 public:
   void start_frame();
   void open_label(const char *label);
   void close_label(float time_ms, const char *label);
   float get_averange(const TimeLabel &label);
   float get_max(const TimeLabel &label);
-  const vector<TimeLabel> &get_frame_history();
+  const std::vector<TimeLabel> &get_frame_history();
 };
 
 Profiler &get_cpu_profiler();

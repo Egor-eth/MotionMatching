@@ -28,6 +28,13 @@ bool edit_component(ecs::EntityId &component, const char *name, bool view_only);
 bool edit_component(ecs::string &component, const char *name, bool view_only);
 bool edit_component(std::string &component, const char *name, bool view_only);
 
+template<typename T>
+std::enable_if_t<std::is_base_of<IAsset, T>::value, bool>
+edit_component(Asset<T> &component, const char *, bool view_only);
+
+template<typename T>
+std::enable_if_t<is_vector<T>::value, bool>
+edit_component(T &v, const char *name, bool view_only);
 
 template<typename T>
 std::enable_if_t<HasReflection<T>::value, bool> edit_component(T &component, const char *, bool view_only)
@@ -106,10 +113,10 @@ edit_component(T &v, const char *name, bool view_only)
 }
 
 template<typename T>
-std::enable_if_t<is_base_of<IAsset, T>::value, bool>
+std::enable_if_t<std::is_base_of<IAsset, T>::value, bool>
  edit_component(Asset<T> &component, const char *, bool view_only)
 {
-  constexpr const string_view &tName = nameOf<T>::value;
+  constexpr const std::string_view &tName = nameOf<T>::value;
   constexpr int BUFN = 255;
   char buf[BUFN];
   if (component)
@@ -134,8 +141,8 @@ std::enable_if_t<is_base_of<IAsset, T>::value, bool>
         select = !select;
       if (select)
       {
-        vector<const char *> names;
-        vector<const string *> keys;
+        std::vector<const char *> names;
+        std::vector<const std::string *> keys;
         const auto &resMap = Resources::instance().assets[tName];
         for (const auto &asset : resMap.resources)
         {

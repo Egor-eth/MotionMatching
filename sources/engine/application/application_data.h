@@ -18,10 +18,10 @@ private:
   Time timer;
 public:
   ecs::SceneManager *scene;
-  string root, projectPath;
-  vector<filesystem::path> resourcesPaths, shadersPaths, templatePaths;
+    std::string root, projectPath;
+    std::vector<std::filesystem::path> resourcesPaths, shadersPaths, templatePaths;
   std::vector<std::function<void()>> mainThreadJobs;
-  Application(const string &window_name, const string &project_path, int width, int height, bool full_screen = false);
+  Application(const std::string &window_name, const std::string &project_path, int width, int height, bool full_screen = false);
   bool sdl_event_handler();
   void start();
   void main_loop();

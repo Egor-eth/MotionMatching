@@ -52,7 +52,7 @@ float Profiler::get_max(const TimeLabel &label)
   return labelAveranges[label_id_hash(label.label, label.id)].get_max();
 }
 
-const vector<TimeLabel> &Profiler::get_frame_history()
+const std::vector<TimeLabel> &Profiler::get_frame_history()
 {
   return prev_frame_labels;
 }
@@ -76,7 +76,7 @@ float Profiler::AverangeTime::get_max() const
 {
   float maxTime = 0;
   for (float dt : dtChain)
-    maxTime = max(maxTime, dt);
+    maxTime = std::max(maxTime, dt);
   return maxTime;
 }
 

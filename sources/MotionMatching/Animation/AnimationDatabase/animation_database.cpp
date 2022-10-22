@@ -6,6 +6,8 @@
 #include <assimp/postprocess.h>
 #include <application/time.h>
 
+using namespace std;
+
 int AnimationDataBase::cadr_count() const
 {
   int count = 0;

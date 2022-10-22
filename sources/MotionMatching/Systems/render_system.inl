@@ -15,7 +15,7 @@ SYSTEM(stage=render;scene=game, editor) process_animation(
 {
   if (mesh)
   {
-    vector<mat4> &curTransform = transform.get_bones();
+    std::vector<mat4> &curTransform = transform.get_bones();
     const AnimationTree &tree = animationPlayer.tree;
   
     curTransform.resize(mesh->bonesMap.size());
@@ -30,7 +30,7 @@ SYSTEM(stage=render;scene=game, editor) process_animation(
   {
     mat4 t = transform.get_transform();
     const AnimationTree &tree = animationPlayer.tree;
-    static vector<vec3> boneOffsets;
+    static std::vector<vec3> boneOffsets;
     if (boneOffsets.size() != tree.nodes.size())
       boneOffsets.resize(tree.nodes.size());
 

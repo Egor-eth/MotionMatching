@@ -9,7 +9,7 @@
 #include <filesystem>
 #include <map>
 #include <vector>
-
+using namespace std;
 namespace fs = filesystem;
 
 static vector<PrecompiledShader> precompiledShaders;

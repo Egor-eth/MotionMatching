@@ -19,8 +19,8 @@ namespace ecs
 #ifndef RELEASE
     applicationTags.emplace_back("debug");
 #endif
-    editorScene = make_unique<ecs::EntityManager>(applicationTags, "editor");
-    gameScene = make_unique<ecs::EntityManager>(applicationTags, "game");
+    editorScene = std::make_unique<ecs::EntityManager>(applicationTags, "editor");
+    gameScene = std::make_unique<ecs::EntityManager>(applicationTags, "game");
   }
 
   void SceneManager::sort_systems()

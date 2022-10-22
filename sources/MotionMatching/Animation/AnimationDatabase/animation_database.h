@@ -14,9 +14,9 @@ class AnimationDataBase : public  IAsset
 public:
   AnimationTreeData tree;
   REFLECT(AnimationDataBase,
-    (vector<AnimationClip>) (clips),
+    (std::vector<AnimationClip>) (clips),
     (Asset<FBXMeta>) (treeSource),
-    (vector<string>) (tagsNames)
+    (std::vector<std::string>) (tagsNames)
   )
   void acceleration_structs(bool check_existance = false);
   bool needForceReload;
@@ -27,7 +27,7 @@ public:
   std::vector<KdTree> kdTrees;
 
   int cadr_count() const;
-  virtual void load(const filesystem::path &path, bool reload, AssetStatus &status) override;
+  virtual void load(const std::filesystem::path &path, bool reload, AssetStatus &status) override;
   virtual bool edit() override; 
 };
 

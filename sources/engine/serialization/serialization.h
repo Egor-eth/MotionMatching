@@ -5,6 +5,7 @@
 #include <set>
 #include <vector>
 #include <eastl/vector.h>
+#include <eastl/string.h>
 #include <fstream>
 #include <sstream>
 #include <filesystem>
@@ -128,10 +129,46 @@ inline size_t write(std::ostream& os, const T &value, const Args &... args)
 {
   return write(os, value) + write(os, args...);
 }
+/*
+namespace ecs
+{
+    struct EntityId;
+}
+class Mesh;
 
+template<typename T>
+inline std::enable_if_t<std::is_same_v<T, ecs::EntityId> || std::is_same_v<T, Mesh>, size_t>
+read(std::istream&, T&) {
+
+}*/
+
+//
+
+inline size_t read(std::istream& is, std::string& value);
+template<typename T>
+inline std::enable_if_t<std::is_base_of_v<ISerializable, T>, size_t> read(std::istream& is, T& value);
+template<typename T>
+inline size_t read(std::istream& is, eastl::vector<T>& value);
+template<typename T, typename U>
+inline size_t read(std::istream& is, std::pair<T, U>& value);
+template<typename T>
+inline size_t read(std::istream& is, std::vector<T>& value);
+
+inline size_t read(std::istream& is, eastl::string& value)
+{
+    const auto pos = is.tellg();
+
+    std::uint32_t len = 0;
+    is.read(reinterpret_cast<char*>(&len), sizeof(len));
+
+    value.resize(len);
+    if (len > 0)
+        is.read(value.data(), len);
+    return static_cast<size_t>(is.tellg() - pos);
+}
 
 template<typename T> 
-inline std::enable_if_t<!std::is_base_of_v<ISerializable, T> && !HasReflection<T>::value, size_t>
+inline std::enable_if_t<!std::is_base_of_v<ISerializable, T> && !HasReflection<T>::value, size_t> //<--
  read(std::istream& is, T& value)
 {
   const auto pos = is.tellg();
@@ -165,6 +202,20 @@ inline size_t read(std::istream& is, std::filesystem::path& value)
   value = std::filesystem::path(s);
   return p;
 }
+
+
+
+template<typename T, typename U>
+inline size_t read(std::istream& is, std::pair<T, U>& value)
+{
+    const auto pos = is.tellg();
+    read(is, value.first);
+    read(is, value.second);
+    return static_cast<size_t>(is.tellg() - pos);
+}
+
+
+
 template<typename T>
 inline size_t read(std::istream& is, std::vector<T>& value) 
 {
@@ -266,14 +317,6 @@ inline size_t read(std::istream& is, std::set<T>& value)
     read(is, t);
     value.insert(t);
   }
-  return static_cast<size_t>(is.tellg() - pos);
-}
-template<typename T, typename U>
-inline size_t read(std::istream& is, std::pair<T, U>& value) 
-{
-  const auto pos = is.tellg();
-  read(is, value.first);
-  read(is, value.second);
   return static_cast<size_t>(is.tellg() - pos);
 }
 

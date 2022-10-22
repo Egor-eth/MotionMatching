@@ -62,7 +62,7 @@ constexpr int MAX_SAMPLES = 10000;
 struct MMProfiler : ecs::Singleton
 {
   //vector<ProfileTracker> trackers;
-  vector<ProfileTracker> avgTrackers;
+  std::vector<ProfileTracker> avgTrackers;
   //Tag tagsCount;
   bool stopped = false;
   bool inited = false;
@@ -193,7 +193,7 @@ afterMM:
           if (mmOptimisationIndex >= (int)settingsContainer.motionMatchingOptimisationSettings.size())
           {
             settings.startTesting = false;
-            ofstream os(project_path("profile/average.txt"));
+            std::ofstream os(project_path("profile/average.txt"));
             os << "name;average;max;avg_ratio;max_ratio\n";
             const auto &tracker = profiler.get_tracker(0);
             float avgBruteForce = tracker.averageTime;

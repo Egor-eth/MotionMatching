@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 #include "shader_gen.h"
-
+using namespace std;
 namespace fs = filesystem;
 
 static map<fs::path, GLuint> shaderTypeMap = 

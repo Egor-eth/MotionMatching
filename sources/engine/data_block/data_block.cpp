@@ -2,11 +2,14 @@
 #include <filesystem>
 #include <fstream>
 #include <ostream>
-#include <istream>
 #include <cctype>
 #include "common.h"
 #include "3dmath.h"
 #include <cstring>
+
+#pragma clang optimize off
+
+using namespace std;
 
 #define OUT_VEC(vec2, vec3, vec4)\
 ostream& operator<<(ostream& os, const vec2& v)\
@@ -145,10 +148,10 @@ static bool parse(Stream &stream, vec<N, T, defaultp> &value)
   {
     if constexpr (N == 2) {
       read = sscanf(stream.data(), "%f,%f%n", &value.x, &value.y, &n);
-      printf("%i", n);
     }
-    else if constexpr (N == 3)
+    else if constexpr (N == 3) {
       read = sscanf(stream.data(), "%f,%f,%f%n", &value.x, &value.y, &value.z, &n);
+    }
     else
       read = sscanf(stream.data(), "%f,%f,%f,%f%n", &value.x, &value.y, &value.z, &value.w, &n);
   }
@@ -319,6 +322,8 @@ static bool read_blk(Stream &stream, DataBlock &block)
   string varName, varType;
   for (int c; (c = stream.peek()) != EOF; stream.get())
   {
+    const char* str = stream.data();
+
     if (std::isspace(c))
       continue;
     if (c == '}')
@@ -330,6 +335,10 @@ static bool read_blk(Stream &stream, DataBlock &block)
     varType.clear();
     if (read_var(stream, varName))
     {
+        if (varName == "mesh")
+        {
+            int t = 0;
+        }
       if (read_character(stream, ':'))
       {
         if (read_type(stream, varType))

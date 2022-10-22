@@ -15,7 +15,7 @@ REFLECT(
   mutable mat4 cachedTransform;
   mutable mat3x4 cached3x4Transform;
   mutable bool calculated;
-  vector<mat4> bones;
+  std::vector<mat4> bones;
 public:
   Transform();
   Transform(vec3 position, mat4x4 rotation = mat4x4(1.f), vec3 scale = vec3(1.f));
@@ -34,11 +34,11 @@ public:
   void set_rotation(float yaw = 0, float pitch = 0, float roll = 0);
   void set_position(const vec3 position);
   void set_scale(const vec3 scale);
-  vector<mat4>& get_bones()
+  std::vector<mat4>& get_bones()
   {
     return bones;
   }
-  const vector<mat4>& get_bones() const
+  const std::vector<mat4>& get_bones() const
   {
     return bones;
   }

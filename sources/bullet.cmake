@@ -1,6 +1,8 @@
 
+
 if(WIN32)
   set(ADDITIONAL_LIBS ${ADDITIONAL_LIBS} bullet)
+
 
   add_library(bullet STATIC IMPORTED)
   set_target_properties(bullet PROPERTIES
@@ -10,4 +12,9 @@ if(WIN32)
           LINKER_LANGUAGE CXX)
 else()
   find_package(Bullet REQUIRED)
+  include_directories(${BULLET_INCLUDE_DIRS})
 endif()
+
+link_libraries(
+        BulletDynamics BulletCollision LinearMath
+)

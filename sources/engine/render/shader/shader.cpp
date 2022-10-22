@@ -4,6 +4,8 @@
 #include "shader_gen.h"
 #include "type_registration.h"
 
+using namespace std;
+
 ECS_REGISTER_TYPE(shader, Shader, true, true);
 struct ShaderInfo
 {

@@ -16,31 +16,31 @@ Texture2DArray::Texture2DArray()
   glGenTextures(1, &textureObject);
 }
 
-static vector<string> split(const string &s, char delim) {
-  vector<string> result;
-  stringstream ss(s);
-  string item;
+static std::vector<std::string> split(const std::string &s, char delim) {
+  std::vector<std::string> result;
+  std::stringstream ss(s);
+  std::string item;
   while (getline(ss, item, delim))
     if (item.size() > 0)
       result.emplace_back(item);
   return result;
 }
-void Texture2DArray::load(const filesystem::path &path, bool , AssetStatus &status)
+void Texture2DArray::load(const std::filesystem::path &path, bool , AssetStatus &status)
 {
 
   if (status == AssetStatus::NotLoaded)
   {
     add_job([this, &status, path]()
     {
-      vector<string> names = split(path.string(), '+');
+      std::vector<std::string> names = split(path.string(), '+');
       if (!names.empty())
         textureName = names[0];
-      vector<unsigned char*> images;
+      std::vector<unsigned char*> images;
       bool haveErrors = false;
       for (uint i = 1; i < names.size(); i++)
       {
         int w, h, ch;
-        string fullPath = root_path(names[i]);
+        std::string fullPath = root_path(names[i]);
         auto image = stbi_load(fullPath.c_str(), &w, &h, &ch, 0);
         if (i == 1)
         {

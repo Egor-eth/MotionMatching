@@ -4,6 +4,13 @@
 #include <config/config.h>
 
 template<typename T>
+void read(const DataBlock &blk, ecs::vector<T> &t);
+
+template<typename T>
+std::enable_if_t<HasReflection<T>::value, void> read(const DataBlock &blk, T &value);
+
+
+template<typename T>
 std::enable_if_t<!HasReflection<T>::value, void> read(const DataBlock &blk, T &t)
 {
   if constexpr (std::is_constructible_v<T, const DataBlock &>)
@@ -11,6 +18,8 @@ std::enable_if_t<!HasReflection<T>::value, void> read(const DataBlock &blk, T &t
     t = T(blk);
   }
 }
+
+
 template<typename T>
 void read(const DataBlock &blk, ecs::vector<T> &t)
 {

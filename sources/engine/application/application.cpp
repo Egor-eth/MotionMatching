@@ -1,7 +1,6 @@
 #include "application_data.h"
 #include "application.h"
 #include "render/shader/shader_factory.h"
-#include "glad/glad.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
 #include "profiler/profiler.h"
@@ -10,6 +9,7 @@
 #include "ecs/ecs_scene.h"
 #include "application_metainfo.h"
 #include "memory/tmp_allocator.h"
+
 namespace ecs
 {
   void load_templates_from_blk();
@@ -17,7 +17,7 @@ namespace ecs
 void create_all_resources_from_metadata();
 void save_all_resources_to_metadata();
 
-Application::Application(const string &project_name,const string &root, int width, int height, bool full_screen):
+Application::Application(const std::string &project_name,const std::string &root, int width, int height, bool full_screen):
 context(project_name, width, height, full_screen), timer(), scene(new ecs::SceneManager()),
 root(root),
 projectPath(root + "/" + project_name)
@@ -26,11 +26,11 @@ projectPath(root + "/" + project_name)
   application = this;
 }
 
-static void copy_paths(const std::string &root, const ecs::vector<ecs::string> &src, vector<filesystem::path> &dst)
+static void copy_paths(const std::string &root, const ecs::vector<ecs::string> &src, std::vector<std::filesystem::path> &dst)
 {
   dst.resize(src.size());
   for (int i = 0, n = src.size(); i < n; i++)
-    dst[i] = filesystem::path(root + "/" + src[i].c_str());
+    dst[i] = std::filesystem::path(root + "/" + src[i].c_str());
 }
 
 void Application::start()
@@ -40,6 +40,10 @@ void Application::start()
   copy_paths(root, metaInfo.resourcesPaths, resourcesPaths);
   copy_paths(root, metaInfo.templatePaths, templatePaths);
   compile_shaders();
+    context.start_imgui();
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
   bool editor = !metaInfo.startGame;
   
   #ifdef RELEASE
@@ -156,19 +160,19 @@ void Application::exit()
   ImGui::DestroyContext();
   SDL_Quit();
 }
-string project_path(const string &path)
+std::string project_path(const std::string &path)
 {
   return Application::instance().projectPath + "/" + path;
 }
-string project_path()
+std::string project_path()
 {
   return Application::instance().projectPath;
 }
-string root_path(const std::string &path)
+std::string root_path(const std::string &path)
 {
   return Application::instance().root + "/" + path;
 }
-string root_path()
+std::string root_path()
 {
   return Application::instance().root;
 }

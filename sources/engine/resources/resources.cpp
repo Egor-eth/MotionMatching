@@ -2,6 +2,8 @@
 #include "application/application_data.h"
 #include "../render/mesh.h"
 
+using namespace std;
+
 namespace fs = filesystem;
 
 void create_all_resources_from_metadata(const fs::path &path)

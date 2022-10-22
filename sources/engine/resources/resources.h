@@ -6,13 +6,13 @@
 
 struct ResourceMap
 {
-  string name;
+    std::string name;
   bool metaDataAsset;
   std::map<std::string, Asset<AssetStub>> resources;
-  std::function<void(const filesystem::path&)> createNewAsset;
-  std::function<void(const filesystem::path&)> createExistsAsset;
-  std::function<void(const string&)> createAssetById; 
-  std::function<void(const filesystem::path&, const Asset<AssetStub>&)> createCopyAsset;
+  std::function<void(const std::filesystem::path&)> createNewAsset;
+  std::function<void(const std::filesystem::path&)> createExistsAsset;
+  std::function<void(const std::string&)> createAssetById;
+  std::function<void(const std::filesystem::path&, const Asset<AssetStub>&)> createCopyAsset;
   std::function<void(const Asset<AssetStub>&)> saveAsset;
   std::function<bool(Asset<AssetStub>&)> editAsset;
   std::function<void(Asset<AssetStub>&)> loadAsset;
@@ -32,9 +32,9 @@ public:
 };
 
 template<typename T>
-Asset<T> get_resource(const string &name)
+Asset<T> get_resource(const std::string &name)
 {
-  constexpr const string_view &typeName = nameOf<T>::value;
+  constexpr const std::string_view &typeName = nameOf<T>::value;
   for (auto &assetStub : Resources::instance().assets[typeName].resources)
   {
     const Asset<T> &asset = assetStub.second;

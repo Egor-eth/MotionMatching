@@ -5,8 +5,9 @@
 #include "manager/entity_id.h"
 #include <filesystem>
 #include <map>
-using std::string;
-namespace fs = filesystem;
+namespace fs = std::filesystem;
+using namespace std;
+
 namespace ecs
 { 
   struct TemplateFile

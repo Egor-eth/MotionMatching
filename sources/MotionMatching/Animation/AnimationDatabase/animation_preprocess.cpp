@@ -8,6 +8,8 @@
 #include "animation_database.h"
 #include <data_block/data_block.h>
 
+using namespace std;
+
 string normalName(const string& badName)
 {
   return badName.substr(0, badName.find("_$AssimpFbx$_"));

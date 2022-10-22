@@ -1,6 +1,8 @@
 #include "animation_clip.h"
 #include "animation_nodes.h"
 
+using namespace std;
+
 AnimationClip::AnimationClip(uint duration, float ticksPerSecond, const string &name,
  const AnimationTreeData& tree, map<string, vector<quat>>& quats, map<string, vector<vec3>>& vecs, AnimationTags tags,
  bool loopable, string nextClip, bool rotatable):

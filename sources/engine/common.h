@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 #include <memory>
-using namespace std;
+
+//using namespace std;
 
 typedef unsigned int uint;
 void debug_error(const char *format, ...);

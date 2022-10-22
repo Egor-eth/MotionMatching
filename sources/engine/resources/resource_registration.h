@@ -1,26 +1,26 @@
 #include "resources.h"
 
 template<typename T, bool meta_data_asset, bool user_path_usage>
-Asset<T> create_new_asset(const filesystem::path &path)
+Asset<T> create_new_asset(const std::filesystem::path &path)
 {
   assert(!user_path_usage);//can create assets only with Asset<T>(user_path)
 
-  constexpr const string_view &typeName = nameOf<T>::value;
+  constexpr const std::string_view &typeName = nameOf<T>::value;
   auto &resourcesMap = Resources::instance().assets[typeName];
   AssetImplementation<T> *asset = new AssetImplementation<T>();
 
   asset->name = asset->asset.asset_name(path);
-  const filesystem::path s = path.string() + ".meta";
+  const std::filesystem::path s = path.string() + ".meta";
   asset->path = meta_data_asset ? s : path;
   asset->edited = true;
   asset->asset.after_construct(asset->path);
 
-  const string &assetName = asset->name;
-  const filesystem::path &pathToAsset = asset->path;  
+  const std::string &assetName = asset->name;
+  const std::filesystem::path &pathToAsset = asset->path;
   {
-    ofstream file(pathToAsset, ios::binary);//create file
+    std::ofstream file(pathToAsset, std::ios::binary);//create file
   }
-  ifstream file(pathToAsset, ios::binary);
+  std::ifstream file(pathToAsset, std::ios::binary);
   if (file.fail())
   {
     debug_error("file %s should exists when create asset", pathToAsset.string().c_str());
@@ -49,7 +49,7 @@ Asset<T> create_new_asset(const filesystem::path &path)
 }
 
 template<typename T, bool meta_data_asset, bool user_path_usage>
-Asset<T> create_copy_asset(const filesystem::path &path, const Asset<AssetStub> &other)
+Asset<T> create_copy_asset(const std::filesystem::path &path, const Asset<AssetStub> &other)
 {
   Asset<T> asset = create_new_asset<T, meta_data_asset, user_path_usage>(path);
   asset.copy(other);
@@ -57,17 +57,17 @@ Asset<T> create_copy_asset(const filesystem::path &path, const Asset<AssetStub> 
 }
 
 template<typename T, bool meta_data_asset, bool user_path_usage>
-Asset<T> create_exists_asset(const filesystem::path &path)
+Asset<T> create_exists_asset(const std::filesystem::path &path)
 {
   assert(!user_path_usage);//can create assets only with Asset<T>(user_path)
 
-  constexpr const string_view &typeName = nameOf<T>::value;
+  constexpr const std::string_view &typeName = nameOf<T>::value;
   auto &resourcesMap = Resources::instance().assets[typeName];
-  const filesystem::path s = path.string() + ".meta";
-  const filesystem::path &pathToAsset = meta_data_asset ? s : path;
+  const std::filesystem::path s = path.string() + ".meta";
+  const std::filesystem::path &pathToAsset = meta_data_asset ? s : path;
 
-  ifstream file(pathToAsset, ios::binary);
-  string name;
+  std::ifstream file(pathToAsset, std::ios::binary);
+  std::string name;
   if (!file.fail())
   {
     read(file, name);
@@ -115,9 +115,9 @@ Asset<T> create_exists_asset(const filesystem::path &path)
 }
 
 template<typename T>
-Asset<T> create_asset_by_id(const string &name)
+Asset<T> create_asset_by_id(const std::string &name)
 {
-  constexpr const string_view &typeName = nameOf<T>::value;
+  constexpr const std::string_view &typeName = nameOf<T>::value;
   auto &resourcesMap = Resources::instance().assets[typeName];
   auto it = resourcesMap.resources.find(name);
   if (it == resourcesMap.resources.end())
@@ -152,25 +152,25 @@ template<typename T, bool userPathUsage = false>
 struct ResourceRegister
 {
   template<bool metaDataAsset, bool userPathUsage_>
-  void add_asset(const string_view &assetName)
+  void add_asset(const std::string_view &assetName)
   {
     Resources::instance().assets.try_emplace(assetName, 
-    ResourceMap{string(assetName), metaDataAsset, {},
+    ResourceMap{std::string(assetName), metaDataAsset, {},
       create_new_asset<T, metaDataAsset, userPathUsage_>, create_exists_asset<T, metaDataAsset, userPathUsage_>, 
       create_asset_by_id<T>, create_copy_asset<T, metaDataAsset, userPathUsage_>, 
       save_asset<T>, edit_asset<T>, load_asset<T>, reload_asset<T>});
   }
   ResourceRegister(const std::vector<std::string> &extensions)
   {
-    constexpr const string_view &assetName = nameOf<T>::value;
+    constexpr const std::string_view &assetName = nameOf<T>::value;
     for (const std::string &extension : extensions)
       Resources::instance().extToAssetName.try_emplace(extension, assetName);
     add_asset<true, userPathUsage>(assetName);
   }
   ResourceRegister()
   {
-    constexpr const string_view &assetName = nameOf<T>::value;
-    Resources::instance().extToAssetName.try_emplace("."+string(assetName), assetName);
+    constexpr const std::string_view &assetName = nameOf<T>::value;
+    Resources::instance().extToAssetName.try_emplace("."+std::string(assetName), assetName);
     add_asset<false, userPathUsage>(assetName);
   }
 };

@@ -1,6 +1,6 @@
 #!/bin/bash
 PROJECT=${1:-MotionMatching}
-BUILD_TYPE=${2:-dev}
+BUILD_TYPE=${2:-dbg}
 REBUILD=${3:-no}
 ECS_CODEGEN=${4:-yes}
 CMAKE=${5:-yes}

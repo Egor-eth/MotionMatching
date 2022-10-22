@@ -6,11 +6,11 @@ class FBXMeta : public IAsset
 {
   REFLECT(FBXMeta,
   (bool) (loaded),
-  (vector<string>) (meshMetaData))
+  (std::vector<std::string>) (meshMetaData))
   void create_assets() const;
-  void read_file_info(const filesystem::path &path);
+  void read_file_info(const std::filesystem::path &path);
 public:
-  virtual void load(const filesystem::path &path, bool reload, AssetStatus &status) override;
+  virtual void load(const std::filesystem::path &path, bool reload, AssetStatus &status) override;
   
-  virtual bool after_construct(const filesystem::path &path) override;
+  virtual bool after_construct(const std::filesystem::path &path) override;
 };

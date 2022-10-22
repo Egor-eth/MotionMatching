@@ -10,7 +10,7 @@
 #include "shader_gen.h"
 #include "application/application.h"
 
-
+using namespace std;
 namespace fs = filesystem;
 #define SPACE_SYM " \n\t\r\a\f\v"
 #define NAME_SYM "a-zA-Z0-9_"
@@ -232,7 +232,7 @@ static void create_shader_from_parsed_state(const fs::path &path, const ParseSta
 {
   string vsPart = "#version 450\n#define VS 1\n" + predefine + state.commonPart + state.vsPart;
   string psPart = "#version 450\n#define PS 1\n" + predefine + state.commonPart + state.psPart;
-  
+
   vector<pair<uint, const char*>> shaderCode{
     {GL_VERTEX_SHADER, vsPart.c_str()},
     {GL_FRAGMENT_SHADER, psPart.c_str()}
@@ -240,6 +240,7 @@ static void create_shader_from_parsed_state(const fs::path &path, const ParseSta
   uint program;
   if (compile_shader(state.currentShader, shaderCode, program))
   {
+      debug_log("shader %s compiled", state.currentShader.c_str());
     Shader(state.currentShader, program, true, true);
   }
   else

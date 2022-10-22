@@ -7,13 +7,13 @@
 void FBXMeta::create_assets() const
 {
 
-  for (const string &str : meshMetaData)
+  for (const std::string &str : meshMetaData)
   { 
     Asset<Mesh> mesh(str);
   }
 }
 
-bool FBXMeta::after_construct(const filesystem::path &path)
+bool FBXMeta::after_construct(const std::filesystem::path &path)
 {
   if (loaded)
   {
@@ -29,12 +29,16 @@ bool FBXMeta::after_construct(const filesystem::path &path)
   }
 }
 
-void FBXMeta::read_file_info(const filesystem::path &path)
+void FBXMeta::read_file_info(const std::filesystem::path &path)
 {
   Assimp::Importer importer;
   importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
   importer.SetPropertyFloat(AI_CONFIG_GLOBAL_SCALE_FACTOR_KEY, 1.f);
-  string fbxPath = path.parent_path().string() + "\\" + path.stem().string();
+#ifdef __WIN32
+  std::string fbxPath = path.parent_path().string() + "\\" + path.stem().string();
+#else
+  std::string fbxPath = path.parent_path().string() + "/" + path.stem().string();
+#endif
   importer.ReadFile(fbxPath, aiPostProcessSteps::aiProcess_Triangulate | aiPostProcessSteps::aiProcess_LimitBoneWeights |
     aiPostProcessSteps::aiProcess_GenNormals | aiProcess_GlobalScale | aiProcess_FlipWindingOrder);
 
@@ -44,10 +48,10 @@ void FBXMeta::read_file_info(const filesystem::path &path)
     debug_error("no asset in %s", fbxPath.c_str());
     return;
   }
-  filesystem::path resourceRoot = root_path();
+  std::filesystem::path resourceRoot = root_path();
   for (uint i = 0; i < scene->mNumMeshes; ++i)
   {
-    filesystem::path path_ = (fbxPath + "[" + to_string(i) + "]" );
+    std::filesystem::path path_ = (fbxPath + "[" + std::to_string(i) + "]" );
     meshMetaData.emplace_back(path_.lexically_relative(resourceRoot).string());
     debug_log("find new mesh %s", meshMetaData.back().c_str());
   }
@@ -55,7 +59,7 @@ void FBXMeta::read_file_info(const filesystem::path &path)
 
 }
 
-void FBXMeta::load(const filesystem::path &path, bool reload, AssetStatus &status)
+void FBXMeta::load(const std::filesystem::path &path, bool reload, AssetStatus &status)
 {
   if (reload || loaded)
     return;
