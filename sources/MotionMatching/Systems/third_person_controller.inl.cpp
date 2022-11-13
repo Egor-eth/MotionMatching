@@ -15,9 +15,9 @@ void update_attached_camera(ecs::EntityId eid, Callable lambda)
 }
 
 
-void third_peson_controller_update_func();
+void third_person_controller_update_func();
 
-ecs::SystemDescription third_peson_controller_update_descr("third_peson_controller_update", {
+ecs::SystemDescription third_person_controller_update_descr("third_person_controller_update", {
   {ecs::get_type_description<ecs::EntityId>("attachedCamera"), false},
   {ecs::get_type_description<PersonController>("personController"), false},
   {ecs::get_type_description<ThirdPersonController>("thirdPersonController"), false}
@@ -25,11 +25,11 @@ ecs::SystemDescription third_peson_controller_update_descr("third_peson_controll
 }, {},
 {},
 {},
-third_peson_controller_update_func, "act", {}, false);
+third_person_controller_update_func, "act", {}, false);
 
-void third_peson_controller_update_func()
+void third_person_controller_update_func()
 {
-  ecs::perform_system(third_peson_controller_update_descr, third_peson_controller_update);
+  ecs::perform_system(third_person_controller_update_descr, third_person_controller_update);
 }
 
 void third_controller_appear_handler(const ecs::Event &event);

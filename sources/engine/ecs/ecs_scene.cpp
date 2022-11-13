@@ -25,6 +25,7 @@ namespace ecs
 
   void SceneManager::sort_systems()
   {
+    before_act = ecs::get_system_stage("before_act");
     act = ecs::get_system_stage("act");
     before_render = ecs::get_system_stage("before_render");
     render = ecs::get_system_stage("render");
@@ -70,6 +71,7 @@ namespace ecs
   }
   void SceneManager::update_act()
   {
+    update_range(before_act);
     update_range(act);
   }
   void SceneManager::update_render()

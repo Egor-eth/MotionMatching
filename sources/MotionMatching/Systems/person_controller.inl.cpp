@@ -2,9 +2,9 @@
 #include <ecs_perform.h>
 //Code-generator production
 
-void peson_controller_update_func();
+void person_controller_update_func();
 
-ecs::SystemDescription peson_controller_update_descr("peson_controller_update", {
+ecs::SystemDescription person_controller_update_descr("person_controller_update", {
   {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false},
   {ecs::get_type_description<PersonController>("personController"), false},
   {ecs::get_type_description<AnimationTester>("animationTester"), true},
@@ -15,11 +15,11 @@ ecs::SystemDescription peson_controller_update_descr("peson_controller_update", 
 }, {},
 {},
 {},
-peson_controller_update_func, "act", {}, false);
+person_controller_update_func, "act", {}, false);
 
-void peson_controller_update_func()
+void person_controller_update_func()
 {
-  ecs::perform_system(peson_controller_update_descr, peson_controller_update);
+  ecs::perform_system(person_controller_update_descr, person_controller_update);
 }
 
 void controller_mouse_move_handler_handler(const ecs::Event &event);

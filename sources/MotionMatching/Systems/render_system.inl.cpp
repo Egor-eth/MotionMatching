@@ -20,4 +20,21 @@ void process_animation_func()
   ecs::perform_system(process_animation_descr, process_animation);
 }
 
+void debug_physics_func();
+
+ecs::SystemDescription debug_physics_descr("debug_physics", {
+  {ecs::get_type_description<BoxShape>("collision"), false},
+  {ecs::get_type_description<Transform>("transform"), true},
+  {ecs::get_type_description<Settings>("settings"), false}
+}, {
+}, {"game","editor"},
+{},
+{},
+debug_physics_func, "render", {}, false);
+
+void debug_physics_func()
+{
+  ecs::perform_system(debug_physics_descr, debug_physics);
+}
+
 

@@ -4,6 +4,12 @@
 #include <assimp/postprocess.h>
 #include "render/mesh.h"
 
+#ifdef __WIN32
+#define PATH_SEPARATOR "\\"
+#else
+#define PATH_SEPARATOR "/"
+#endif
+
 void FBXMeta::create_assets() const
 {
 
@@ -34,11 +40,7 @@ void FBXMeta::read_file_info(const std::filesystem::path &path)
   Assimp::Importer importer;
   importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
   importer.SetPropertyFloat(AI_CONFIG_GLOBAL_SCALE_FACTOR_KEY, 1.f);
-#ifdef __WIN32
-  std::string fbxPath = path.parent_path().string() + "\\" + path.stem().string();
-#else
-  std::string fbxPath = path.parent_path().string() + "/" + path.stem().string();
-#endif
+  std::string fbxPath = path.parent_path().string() + PATH_SEPARATOR + path.stem().string();
   importer.ReadFile(fbxPath, aiPostProcessSteps::aiProcess_Triangulate | aiPostProcessSteps::aiProcess_LimitBoneWeights |
     aiPostProcessSteps::aiProcess_GenNormals | aiProcess_GlobalScale | aiProcess_FlipWindingOrder);
 

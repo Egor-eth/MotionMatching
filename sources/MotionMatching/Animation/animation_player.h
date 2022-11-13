@@ -33,6 +33,7 @@ class AnimationPlayer
   vec3 rootDeltaTranslation = vec3(0.f);
   float rootDeltaRotation = 0;
   AnimationGoal inputGoal;
+
   REFLECT(AnimationPlayer,
   (AnimationDataBasePtr) (dataBase)
   );

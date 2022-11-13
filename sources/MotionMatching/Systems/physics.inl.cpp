@@ -2,19 +2,75 @@
 #include <ecs_perform.h>
 //Code-generator production
 
-void update_func();
+void physics_update_func();
 
-ecs::SystemDescription update_descr("update", {
-  {ecs::get_type_description<BulletData>("bulletData"), false}
+ecs::SystemDescription physics_update_descr("physics_update", {
+  {ecs::get_type_description<World>("world"), false}
 }, {
-}, {},
-{"motion_matching_update"},
+}, {"game"},
 {},
-update_func, "act", {"game"}, false);
+{},
+physics_update_func, "before_act", {}, false);
 
-void update_func()
+void physics_update_func()
 {
-  ecs::perform_system(update_descr, update);
+  ecs::perform_system(physics_update_descr, physics_update);
+}
+
+void physics_forward_sync_func();
+
+ecs::SystemDescription physics_forward_sync_descr("physics_forward_sync", {
+  {ecs::get_type_description<Transform>("transform"), false},
+  {ecs::get_type_description<PhysicalObject>("physics"), false}
+}, {
+}, {"game"},
+{},
+{"physics_update"},
+physics_forward_sync_func, "before_act", {}, false);
+
+void physics_forward_sync_func()
+{
+  ecs::perform_system(physics_forward_sync_descr, physics_forward_sync);
+}
+
+void physics_backward_sync_func();
+
+ecs::SystemDescription physics_backward_sync_descr("physics_backward_sync", {
+  {ecs::get_type_description<Transform>("transform"), false},
+  {ecs::get_type_description<PhysicalObject>("physics"), false}
+}, {
+}, {"game"},
+{},
+{"physics_update"},
+physics_backward_sync_func, "before_render", {}, false);
+
+void physics_backward_sync_func()
+{
+  ecs::perform_system(physics_backward_sync_descr, physics_backward_sync);
+}
+
+void init_static_box_handler(const ecs::Event &event);
+void init_static_box_singl_handler(const ecs::Event &event, ecs::EntityId eid);
+
+ecs::EventDescription init_static_box_descr(
+  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_static_box", {
+  {ecs::get_type_description<PhysicalObject>("physics"), false},
+  {ecs::get_type_description<BoxShape>("collision"), false},
+  {ecs::get_type_description<Transform>("transform"), true},
+  {ecs::get_type_description<World>("world"), false}
+}, {
+}, {"game"},
+{},
+{},
+init_static_box_handler, init_static_box_singl_handler, {});
+
+void init_static_box_handler(const ecs::Event &event)
+{
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_static_box_descr, init_static_box);
+}
+void init_static_box_singl_handler(const ecs::Event &event, ecs::EntityId eid)
+{
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_static_box_descr, eid, init_static_box);
 }
 
 void init_world_handler(const ecs::Event &event);
@@ -22,7 +78,7 @@ void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid);
 
 ecs::EventDescription init_world_descr(
   ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_world", {
-  {ecs::get_type_description<BulletData>("bulletData"), false}
+  {ecs::get_type_description<World>("world"), false}
 }, {
 }, {"game"},
 {},
@@ -36,27 +92,6 @@ void init_world_handler(const ecs::Event &event)
 void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid)
 {
   ecs::perform_event((const ecs::OnSceneCreated&)event, init_world_descr, eid, init_world);
-}
-
-void create_bullet_handler(const ecs::Event &event);
-void create_bullet_singl_handler(const ecs::Event &event, ecs::EntityId eid);
-
-ecs::EventDescription create_bullet_descr(
-  ecs::get_mutable_event_handlers<ecs::OnSceneDestroy>(), "create_bullet", {
-  {ecs::get_type_description<BulletData>("bulletData"), false}
-}, {
-}, {},
-{},
-{},
-create_bullet_handler, create_bullet_singl_handler, {});
-
-void create_bullet_handler(const ecs::Event &event)
-{
-  ecs::perform_event((const ecs::OnSceneDestroy&)event, create_bullet_descr, create_bullet);
-}
-void create_bullet_singl_handler(const ecs::Event &event, ecs::EntityId eid)
-{
-  ecs::perform_event((const ecs::OnSceneDestroy&)event, create_bullet_descr, eid, create_bullet);
 }
 
 

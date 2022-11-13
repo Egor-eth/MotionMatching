@@ -6,7 +6,8 @@
 #include <render/debug_arrow.h>
 #include <render/global_uniform.h>
 #include "Animation/settings.h"
-  
+#include "Physics/collision/static_box.h"
+
 SYSTEM(stage=render;scene=game, editor) process_animation(
   const Asset<Mesh> &mesh,
   const AnimationPlayer &animationPlayer,
@@ -72,6 +73,7 @@ SYSTEM(stage=render;scene=game, editor) process_animation(
     DEBUG_NODE(AnimationFeaturesNode::RightToeBase)
     DEBUG_NODE(AnimationFeaturesNode::RightHand)
   }
+
 /* 
   if (false)
   {
@@ -113,6 +115,15 @@ SYSTEM(stage=render;scene=game, editor) process_animation(
   }
 }
 
+SYSTEM(stage=render;scene=game, editor) debug_physics(
+        const BoxShape &collision,
+        const Transform *transform,
+        const Settings &settings)
+{
+  vec3 v = transform == nullptr ? vec3{0.0f, 0.0f, 0.0f} : transform->get_position();
+  vec3 w = collision.size / 2.0f;
+  draw_arrow(v, v + w, vec3(1,0,1), 0.05f, true);
+}
 
 /* EVEN() debug_goal_copy_mat(const ecs::OnEntityCreated &, Asset<Mesh> &debugGoalSphere)
 {

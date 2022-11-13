@@ -176,6 +176,7 @@ void display_property(vec4 &property, const char *name)
 {
   ImGui::InputFloat4(name, &property.x);
 }
+
 template<typename T>
 void show_settings(T &settings, const char *settings_name)
 {

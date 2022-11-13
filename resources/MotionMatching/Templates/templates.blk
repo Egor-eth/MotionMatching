@@ -1,6 +1,3 @@
-bullet_physics {
-  bulletData:BulletData{}
-}
 
 mm_manager {
   dataBase:Asset<AnimationDataBase> { path:t = "resources/MotionMatching/AnimationDataBase/light_data_base.AnimationDataBase"; }
@@ -11,59 +8,11 @@ mm_manager {
   tests:vector<AnimationTest> {}
 }
 
-animated_char {
-
-  mesh:Asset<Mesh> { }
-  material:Asset<Material> { path:t = "resources/MotionMatching/Materials/animchar.Material"; }
-
-  transform:Transform {}
-  is_visible:b=true;
-  is_enabled:b=true;
-
-  lods_distances:vector<float> {
-    lod0:f = 2;
-    lod1:f = 10;
-    lod2:f = 50;
-    lod3:f = 400;
+ground {
+  _extends:t = "plane";
+  physics:PhysicalObject {}
+  collision:BoxShape {
+    size:f3 = 50, 0.5, 50;
+    mass:f = 0;
   }
-  lods_meshes:vector<Asset<Mesh>> {
-    mesh:Asset<Mesh> { path:t = "resources/MotionMatching/MotusMan_v55/Lod0.fbx[0]"; }
-    mesh:Asset<Mesh> { path:t = "resources/MotionMatching/MotusMan_v55/Lod1.fbx[0]"; }
-    mesh:Asset<Mesh> { path:t = "resources/MotionMatching/MotusMan_v55/Lod2.fbx[0]"; }
-    mesh:Asset<Mesh> { path:t = "resources/MotionMatching/MotusMan_v55/Lod3.fbx[0]"; }
-  }
-
-  animationPlayer:AnimationPlayer {
-    dataBase:Asset<AnimationDataBase> { path:t = "resources/MotionMatching/AnimationDataBase/light_data_base.AnimationDataBase"; }
-  }
-  bone_remaped:b=false;
-  personController:PersonController { }
-  updateMMStatistic:b = false;
-  mmOptimisationIndex:i=4;
-}
-
-
-fps_char {
-  _extends:t = "animated_char";
-  attachedCamera:EntityId {}
-  thirdPersonController:ThirdPersonController {
-    minZoom:f = 0.5;
-    maxZoom:f = 10;
-    zoomStrength:f = 2.3;
-    lerpStrength:f = 3.6;
-    currentCameraRotation:f2 = 90, -30;
-    wantedCameraRotation:f2 = 90, -30;
-  }
-  lods_distances:vector<float> {
-    lod0:f = 2;
-    lod1:f = 10;
-    lod2:f = 50;
-    lod3:f = 400;
-  }
-}
-
-tester_char {
-  _extends:t = "animated_char";
-  animationTester:AnimationTester {}
-  testerSeed:i=0;
 }

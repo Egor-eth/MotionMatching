@@ -91,7 +91,7 @@ vec3 apply_root_motion_to_speed(vec3 speed, vec3 root_motion)
   return root_motion * speed;
 }
 
-SYSTEM(stage=act) peson_controller_update(
+SYSTEM(stage=act) person_controller_update(
   AnimationPlayer &animationPlayer,
   PersonController &personController,
   AnimationTester *animationTester,
@@ -200,18 +200,23 @@ SYSTEM(stage=act) peson_controller_update(
     personController.speed = lerp(personController.speed, speed, dt * settings.decelerationRate);
   }
   personController.simulatedPosition += v0 * dt * transform.get_scale();
+  //personController.simulatedPosition.y = transform.get_position().y; //fix wrong y position
   vec3 rootDelta = apply_root_motion_to_speed(speed, animationPlayer.rootDeltaTranslation);
 
 
   personController.realPosition = transform.get_position() + transform.get_rotation() * rootDelta * dt;
 
   vec3 positionDelta = personController.simulatedPosition - personController.realPosition;
+  //positionDelta.y = 0.0f; //y is controlled by physics
   float errorRadius = length(positionDelta);
   if (errorRadius > settings.maxMoveErrorRadius)
   {
     personController.realPosition += positionDelta * (errorRadius-settings.maxMoveErrorRadius)/errorRadius;
   }
+  float posY = transform.get_position().y;
   transform.get_position() = personController.realPosition;
+  personController.realPosition.y = posY;
+  transform.get_position().y = posY;
   transform.set_rotation(-personController.realRotation); 
 
   draw_transform(transform);
