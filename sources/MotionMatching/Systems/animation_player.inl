@@ -5,6 +5,7 @@
 #include "Animation/settings.h"
 #include "Animation/third_person_controller.h"
 #include <render/mesh.h>
+#include "Physics/collision/ragdoll_char.h"
 
 
 SYSTEM(stage=act) animation_player_update(

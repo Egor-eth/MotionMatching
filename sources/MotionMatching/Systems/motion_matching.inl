@@ -6,6 +6,8 @@
 #include <camera.h>
 #include <render/material.h>
 
+#include "Physics/collision/ragdoll_char.h"
+
 AnimationIndex solve_motion_matching(
   AnimationDataBasePtr dataBase,
   const AnimationIndex &index,
@@ -86,7 +88,7 @@ struct MMProfiler : ecs::Singleton
   }
 };
 
-SYSTEM(stage=act;before=animation_player_update) motion_matching_update(
+SYSTEM(stage=act;before=animation_player_update; require_not=RagdollChar collision) motion_matching_update(
   Transform &transform,
   AnimationPlayer &animationPlayer,
   Asset<Material> &material,

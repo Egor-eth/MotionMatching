@@ -15,7 +15,7 @@ sky_box {
 plane {
   transform:Transform {
     scale:f3 = 100, 1, 100;
-    position:f3 = 0, -1, 0;
+    position:f3 = 0, 0, 0;
   }
   mesh:Asset<Mesh> {
     path:t = "plane";

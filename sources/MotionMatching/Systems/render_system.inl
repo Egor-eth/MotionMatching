@@ -6,7 +6,8 @@
 #include <render/debug_arrow.h>
 #include <render/global_uniform.h>
 #include "Animation/settings.h"
-#include "Physics/collision/static_box.h"
+#include "Physics/collision/box_shape.h"
+#include "Physics/bulletutil.h"
 
 SYSTEM(stage=render;scene=game, editor) process_animation(
   const Asset<Mesh> &mesh,
@@ -116,13 +117,19 @@ SYSTEM(stage=render;scene=game, editor) process_animation(
 }
 
 SYSTEM(stage=render;scene=game, editor) debug_physics(
-        const BoxShape &collision,
+        const PhysicalObject &physics,
         const Transform *transform,
         const Settings &settings)
 {
-  vec3 v = transform == nullptr ? vec3{0.0f, 0.0f, 0.0f} : transform->get_position();
-  vec3 w = collision.size / 2.0f;
-  draw_arrow(v, v + w, vec3(1,0,1), 0.05f, true);
+  if(settings.debugCollision) {
+   for(auto body : physics.getBodies()) {
+     btVector3 a, b;
+     body->getAabb(a, b);
+     vec3 v = bt2glm(a);
+     vec3 w = bt2glm(b);
+     draw_arrow(v, w, vec3(0.8, 0, 0.8), 0.05f, false);
+   }
+  }
 }
 
 /* EVEN() debug_goal_copy_mat(const ecs::OnEntityCreated &, Asset<Mesh> &debugGoalSphere)

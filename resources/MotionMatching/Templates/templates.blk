@@ -10,9 +10,14 @@ mm_manager {
 
 ground {
   _extends:t = "plane";
+    transform:Transform {
+    scale:f3 = 10, 1, 10;
+    position:f3 = 0, 0, 0;
+  }
   physics:PhysicalObject {}
   collision:BoxShape {
-    size:f3 = 50, 0.5, 50;
+    size:f3 = 1, 0, 1;
     mass:f = 0;
+    isStatic:b = true;
   }
 }

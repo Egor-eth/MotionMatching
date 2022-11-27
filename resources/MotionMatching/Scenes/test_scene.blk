@@ -18,3 +18,7 @@ entity {
 entity {
   _template:t="fps_char";
 }
+
+entity {
+  _template:t="ragdoll_char"
+}

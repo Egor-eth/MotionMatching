@@ -19,6 +19,7 @@ REFLECT(
   (bool) (debugNodes),
   (bool) (debugTrajectory),
   (bool) (debugBones),
+  (bool) (debugCollision),
   (bool) (MatchingStatistic),
   (bool) (startTesting),
   (int) (testCount),

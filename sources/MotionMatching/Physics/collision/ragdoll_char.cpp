@@ -1,19 +1,18 @@
-#include "box_shape.h"
-#include "Physics/bulletutil.h"
+#include "ragdoll_char.h"
 
-
-BoxShape::BoxShape()
-  : size({0, 0, 0}), shift({0, 0, 0}), mass(), isStatic()
+RagdollChar::RagdollChar()
+        : mass(10.0f)
 {
 
 }
 
-void BoxShape::init_physical_object(const Transform &tr,
-                                    std::vector<btCollisionShape *> &collisionShapes,
-                                    std::vector<btRigidBody *> &rigidBodies,
-                                    std::vector<btTypedConstraint *> &,
-                                    vec3 &glShift) const
+void RagdollChar::init_physical_object(const Transform &tr,
+                                        std::vector<btCollisionShape *> &collisionShapes,
+                                        std::vector<btRigidBody *> &rigidBodies,
+                                        std::vector<btTypedConstraint *> &,
+                                        vec3 &glShift) const
 {
+  /*
   btTransform transform;
   btCollisionShape *boxShape = new btBoxShape(glm2bt(size));
   btCompoundShape *shape = new btCompoundShape();
@@ -29,5 +28,5 @@ void BoxShape::init_physical_object(const Transform &tr,
   transform.setFromOpenGLMatrix(glm::value_ptr(tr.get_transform()));
   btRigidBody *body = isStatic ? create_static_rigid_body(shape, transform) : create_dynamic_rigid_body(shape, transform, mass);
   rigidBodies.push_back(body);
+   */
 }
-

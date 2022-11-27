@@ -23,7 +23,7 @@ void process_animation_func()
 void debug_physics_func();
 
 ecs::SystemDescription debug_physics_descr("debug_physics", {
-  {ecs::get_type_description<BoxShape>("collision"), false},
+  {ecs::get_type_description<PhysicalObject>("physics"), false},
   {ecs::get_type_description<Transform>("transform"), true},
   {ecs::get_type_description<Settings>("settings"), false}
 }, {

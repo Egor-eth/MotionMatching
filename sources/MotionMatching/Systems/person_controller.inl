@@ -19,10 +19,10 @@ vec3 get_wanted_speed(Input &input, bool &onPlace, const ControllerSettings &set
 {
   float right = input.get_key_impl(SDLK_d) - input.get_key_impl(SDLK_a);
   float forward = input.get_key_impl(SDLK_w) - input.get_key_impl(SDLK_s);
-  
+
   float run = input.get_key_impl(SDLK_LSHIFT);
-  
-  
+
+
   vec3 wantedSpeed =  vec3(right, 0.f, forward);
   float speed = length(wantedSpeed);
   if (speed > 1.f)
@@ -45,31 +45,31 @@ vec3 get_wanted_speed(Input &input, bool &onPlace, const ControllerSettings &set
 
 float lerp_angle(float a_angleA, float a_angleB, float a_t)
 {
-  
+
   float da = mod_f(a_angleB - a_angleA, PITWO);
 
   return a_angleA + (mod_f(2*da,PITWO) - da) * a_t;
 }
 float safe_2d_angle(vec3 a_, vec3 b_)
 {
-  vec2 a = vec2(a_.x, a_.z), b = vec2(b_.x, b_.z); 
+  vec2 a = vec2(a_.x, a_.z), b = vec2(b_.x, b_.z);
   float a_l = length(a);
   float b_l = length(b);
   if (a_l < 0.001f || b_l < 0.001f)
     return 0;
   a /= a_l, b /= b_l;
-  
+
   return acos(glm::clamp(dot(a, b), 0.f, 1.f));
 }
 float safe_2d_signed_angle(vec3 a_, vec3 b_)
 {
-  vec2 a = vec2(a_.x, a_.z), b = vec2(b_.x, b_.z); 
+  vec2 a = vec2(a_.x, a_.z), b = vec2(b_.x, b_.z);
   float a_l = length(a);
   float b_l = length(b);
   if (a_l < 0.001f || b_l < 0.001f)
     return 0;
   a /= a_l, b /= b_l;
-  
+
   return acos(glm::clamp(dot(a, b), 0.f, 1.f)) * sign(a.x * b.y - a.y * b.x);
 }
 
@@ -77,7 +77,7 @@ float rotation_abs(float rotation_delta)
 {
   rotation_delta = abs(rotation_delta);
   rotation_delta -= (int)(rotation_delta/PITWO)*PITWO;
-  
+
   rotation_delta = rotation_delta > PI ? PITWO - rotation_delta : rotation_delta;
   return rotation_delta;
 }
@@ -92,12 +92,12 @@ vec3 apply_root_motion_to_speed(vec3 speed, vec3 root_motion)
 }
 
 SYSTEM(stage=act) person_controller_update(
-  AnimationPlayer &animationPlayer,
-  PersonController &personController,
-  AnimationTester *animationTester,
-  Transform &transform,
-  int *controllerIndex,
-  SettingsContainer &settingsContainer) 
+        AnimationPlayer &animationPlayer,
+        PersonController &personController,
+        AnimationTester *animationTester,
+        Transform &transform,
+        int *controllerIndex,
+        SettingsContainer &settingsContainer)
 {
   const ControllerSettings &settings = settingsContainer.controllerSettings[controllerIndex ? *controllerIndex : 0].second;
 
@@ -111,7 +111,7 @@ SYSTEM(stage=act) person_controller_update(
     //debug_log("[%f, %f, %f]", speed.x, speed.y, speed.z);input.get_key(SDLK_w)
     //debug_log("[%f]", input.get_key(SDLK_w));
   }
-  
+
   bool onlySideway = abs(speed.z) < 0.1f && abs(speed.x) > 0.f;
   //bool moveForward = speed.z >= 0.f;
   float sidewayRotation = onlySideway ? safe_2d_signed_angle(speed, vec3(0,0,1)) : 0;
@@ -123,14 +123,14 @@ SYSTEM(stage=act) person_controller_update(
   float desiredOrientation = mod_f(wantedRotation - personController.realRotation, PITWO);
   if (rotation_abs(nextRootRotation - wantedRotation) < rotation_abs(nextLerpRotation - wantedRotation))
   {
-    personController.realRotation = mod_f(nextRootRotation, PITWO); 
+    personController.realRotation = mod_f(nextRootRotation, PITWO);
   }
   else
   {
     personController.realRotation = nextLerpRotation;
   }
 
-  
+
   //bool onlyForward = speed.z > 0.f && abs(speed.x) < 0.1f;
   speed = glm::rotateY(speed, -wantedRotation - sidewayRotation);
 
@@ -140,7 +140,7 @@ SYSTEM(stage=act) person_controller_update(
   v0.y = 0;
   vec3 prevDesiredPoint = vec3(0);
   float onPlaceError = 0;
-   vec3 desiredSpeed = v0;
+  vec3 desiredSpeed = v0;
   for (int i = 0; i < AnimationTrajectory::PathLength; i++)
   {
     float timePercentage = AnimationTrajectory::timeDelays[i] / AnimationTrajectory::timeDelays.back();
@@ -154,12 +154,12 @@ SYSTEM(stage=act) person_controller_update(
     float dangle = lerp_angle(0, -desiredOrientation, percentage);
     trajectory[i].angularVelocity = dangle / AnimationTrajectory::timeDelays[i];
     onPlaceError += length(timeDelay * desiredSpeed);
-  
+
   }
 
-  vec3 v1 = (trajectory[0].point - personController.desiredTrajectory[0]) / 
-    (AnimationTrajectory::timeDelays[0] - settings.inertionTime);
-    v1.y = 0;
+  vec3 v1 = (trajectory[0].point - personController.desiredTrajectory[0]) /
+            (AnimationTrajectory::timeDelays[0] - settings.inertionTime);
+  v1.y = 0;
   personController.desiredTrajectory[0] += (v1 - v0) * dt;
   for (int i = 0; i < AnimationTrajectory::PathLength; i++)
   {
@@ -192,7 +192,7 @@ SYSTEM(stage=act) person_controller_update(
       if (length2(personController.speed) < 0.1f)
         personController.speed = speed * settings.startSpeed;
       else
-        personController.speed = lerp(personController.speed, speed, dt * settings.accelerationRate); 
+        personController.speed = lerp(personController.speed, speed, dt * settings.accelerationRate);
     }
   }
   else
@@ -217,16 +217,16 @@ SYSTEM(stage=act) person_controller_update(
   transform.get_position() = personController.realPosition;
   personController.realPosition.y = posY;
   transform.get_position().y = posY;
-  transform.set_rotation(-personController.realRotation); 
+  transform.set_rotation(-personController.realRotation);
 
   draw_transform(transform);
-   
+
 }
 
 EVENT() controller_mouse_move_handler(
-  const ControllerMouseMoveEvent &e,
-  PersonController &personController,
-  const Settings &settings)
+        const ControllerMouseMoveEvent &e,
+        PersonController &personController,
+        const Settings &settings)
 {
   float dx = e.e.dx * DegToRad * settings.mouseSensitivity;
   personController.wantedRotation += (settings.mouseInvertXaxis ? 1 : -1) * dx;
@@ -236,8 +236,8 @@ EVENT() controller_mouse_move_handler(
 
 
 EVENT() controller_crouch_event_handler(
-  const ControllerKeyBoardEvent &e,
-  PersonController &personController)
+        const ControllerKeyBoardEvent &e,
+        PersonController &personController)
 {
   if (e.e.action == KeyAction::Down)
   {
@@ -249,12 +249,12 @@ EVENT() controller_crouch_event_handler(
 }
 
 PersonController::PersonController(vec3 position) :
-simulatedRotation(0), realRotation(0), wantedRotation(0), angularSpeed(0),
-speed(0),
-simulatedPosition(position), realPosition(position),
-disableEvents(false),
-crouching(false),
-rotationStrafe(0)
+        simulatedRotation(0), realRotation(0), wantedRotation(0), angularSpeed(0),
+        speed(0),
+        simulatedPosition(position), realPosition(position),
+        disableEvents(false),
+        crouching(false),
+        rotationStrafe(0)
 {
   for (vec3&v:desiredTrajectory)
     v = vec3(0.f);
@@ -268,5 +268,5 @@ void PersonController::set_pos_rotation(Transform &transform, vec3 position, flo
   realPosition = simulatedPosition = position;
   realRotation = simulatedRotation = rotation;
   transform.get_position() = position;
-  transform.set_rotation(realRotation); 
+  transform.set_rotation(realRotation);
 }

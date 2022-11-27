@@ -1,4 +1,5 @@
 #include "physical_object.h"
+#include "bulletutil.h"
 
 PhysicalObject::~PhysicalObject()
 {
@@ -25,4 +26,16 @@ btDiscreteDynamicsWorld *PhysicalObject::get_world() const
 const std::vector<btRigidBody *> &PhysicalObject::getBodies() const
 {
   return rigidBodies;
+}
+
+vec3 PhysicalObject::getGlPosition() const
+{
+  return bt2glm(rigidBodies[0]->getCenterOfMassPosition()) + shift;
+}
+
+void PhysicalObject::setFromGlTransform(const Transform &transform)
+{
+  btTransform &tr = getRoot()->getWorldTransform();
+  tr.setRotation(glm2bt_q(glm::quat_cast(transform.get_rotation())));
+  tr.setOrigin(glm2bt(transform.get_position() - shift));
 }

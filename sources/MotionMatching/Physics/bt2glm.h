@@ -25,3 +25,13 @@ inline btMatrix3x3 glm2bt(const mat3 &m)
           m[1][0], m[1][1], m[1][2],
           m[2][0], m[2][1], m[2][2]};
 }
+
+inline btQuaternion glm2bt_q(const quat &q)
+{
+  return {q[0], q[1], q[2], q[3]};
+}
+
+inline quat glm2bt_q(const btQuaternion &q)
+{
+  return {q[0], q[1], q[2], q[3]};
+}
