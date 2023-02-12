@@ -37,5 +37,5 @@ void PhysicalObject::setFromGlTransform(const Transform &transform)
 {
   btTransform &tr = getRoot()->getWorldTransform();
   tr.setRotation(glm2bt_q(glm::quat_cast(transform.get_rotation())));
-  tr.setOrigin(glm2bt(transform.get_position() - shift));
+  tr.setOrigin(glm2bt(transform.get_position()));
 }

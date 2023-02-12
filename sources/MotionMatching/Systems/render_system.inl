@@ -8,6 +8,9 @@
 #include "Animation/settings.h"
 #include "Physics/collision/box_shape.h"
 #include "Physics/bulletutil.h"
+#include "resources/resources.h"
+#include "profiler/profiler.h"
+
 
 SYSTEM(stage=render;scene=game, editor) process_animation(
   const Asset<Mesh> &mesh,
@@ -122,17 +125,54 @@ SYSTEM(stage=render;scene=game, editor) debug_physics(
         const Settings &settings)
 {
   if(settings.debugCollision) {
-   for(auto body : physics.getBodies()) {
+ /*  for(auto body : physics.getBodies()) {
      btVector3 a, b;
      body->getAabb(a, b);
      vec3 v = bt2glm(a);
      vec3 w = bt2glm(b);
      draw_arrow(v, w, vec3(0.8, 0, 0.8), 0.05f, false);
-   }
+   }*/
   }
 }
 
-/* EVEN() debug_goal_copy_mat(const ecs::OnEntityCreated &, Asset<Mesh> &debugGoalSphere)
+template<typename Callable>
+void find_box_shapes(Callable);
+
+
+SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=game, editor) render_box_collider(
+        const Settings &settings)
 {
-  debugGoalSphere.get_material() = debugGoalSphere.get_material().copy();
-} */
+  if (!settings.debugCollision)
+    return;
+  Asset<Mesh> cube = cube_mesh(false);
+  Asset<Material> collisionMat = get_resource<Material>("collision");
+  if (!cube || !collisionMat)
+    return;
+
+  UniformBuffer &dynamicTransforms = get_buffer("DynamicTransforms");
+  constexpr uint instanceSize = sizeof(mat3x4);
+  uint instanceCount = 0;
+  QUERY()find_box_shapes([&](const BoxShape &collision, const PhysicalObject &physics)
+                                {
+                                  for(btRigidBody *body : physics.getBodies()) {
+                                    mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
+                                    Transform tm;
+                                    const btTransform &tr = getTransform(body);
+                                    tm.set_position(bt2glm(body->getCenterOfMassPosition()) + collision.shift);
+                                    btQuaternion quat = tr.getRotation();
+                                    tm.set_rotation(quat[0], quat[1], quat[2]);
+                                    tm.set_scale(collision.size);
+                                    *buffer = tm.get_transform();
+                                    instanceCount++;
+                                  }
+                                });
+  if (instanceCount == 0) return;
+  const Shader &shader = get_shader("collision_shader");
+  if(!shader) return;
+
+  ProfilerLabelGPU label("bounding_box");
+  dynamicTransforms.bind();
+  shader.use();
+  dynamicTransforms.flush_buffer(instanceCount * instanceSize);
+  cube->render_instances(instanceCount, true);
+}

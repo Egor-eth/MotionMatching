@@ -21,3 +21,31 @@ btRigidBody* create_dynamic_rigid_body (btCollisionShape* collisionShape, const 
   body->setDamping(2.0, 2.0); //damping
   return body;
 }
+
+btTransform &getTransform(btRigidBody *body)
+{
+  if (body->getMotionState()) {
+    btTransform tr;
+    body->getMotionState()->getWorldTransform(tr);
+    return tr;
+  }
+   return body->getWorldTransform();
+}
+
+const btTransform &getTransform(const btRigidBody *body)
+{
+  if (body->getMotionState()) {
+    btTransform tr;
+    body->getMotionState()->getWorldTransform(tr);
+    return tr;
+  }
+  return body->getWorldTransform();
+}
+
+mat4x4 getGLTransform(const btRigidBody *body)
+{
+  const btTransform tr = getTransform(body);
+  mat4x4 mat;
+  tr.getOpenGLMatrix(glm::value_ptr(mat));
+  return mat;
+}

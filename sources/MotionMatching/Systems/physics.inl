@@ -54,11 +54,7 @@ SYSTEM(stage=before_act;scene=game; after=physics_update) physics_forward_sync(
 {
   if(!physics.isStaticObject()) {
     btRigidBody *body = physics.getRoot();
-    btTransform tr;
-    if (body->getMotionState()) {
-      body->getMotionState()->getWorldTransform(tr);
-    }
-    tr = body->getWorldTransform();
+    btTransform tr = getTransform(body);
 
     transform.set_position(physics.getGlPosition());
     btQuaternion quat = tr.getRotation();

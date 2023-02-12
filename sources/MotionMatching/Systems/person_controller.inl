@@ -216,7 +216,7 @@ SYSTEM(stage=act) person_controller_update(
   float posY = transform.get_position().y;
   transform.get_position() = personController.realPosition;
   personController.realPosition.y = posY;
-  transform.get_position().y = posY;
+  //transform.get_position().y = posY;
   transform.set_rotation(-personController.realRotation);
 
   draw_transform(transform);
