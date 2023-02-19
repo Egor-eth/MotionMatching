@@ -19,6 +19,10 @@ public:
       world->addConstraint(constraint, true);
     }
     isStatic = obj.isStatic;
+    for(auto body : rigidBodies) {
+      body->forceActivationState(ACTIVE_TAG);
+      body->activate();
+    }
   }
 
   btDiscreteDynamicsWorld *get_world() const;

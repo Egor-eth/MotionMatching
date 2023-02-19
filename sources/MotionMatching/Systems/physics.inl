@@ -38,7 +38,7 @@ EVENT(scene=game) init_ragdoll(const ecs::OnSceneCreated &,
 EVENT(scene=game) init_world(const ecs::OnSceneCreated &,
                              World &world)
 {
-  world->setGravity(btVector3(0, 0, 0));
+  world->setGravity(btVector3(0, -10, 0));
 }
 
 
@@ -61,8 +61,8 @@ SYSTEM(stage=before_act;scene=game; after=physics_update) physics_forward_sync(
 
     transform.set_position(physics.getGlPosition());
     vec3 pos = bt2glm(tr.getOrigin());
-   // std::cout.precision(3);
-   // std::cout << "btpos = " << pos.x << " " << pos.y << " " << pos.z  << std::endl;
+    std::cout.precision(3);
+    std::cout << "btpos = " << pos.x << " " << pos.y << " " << pos.z  << std::endl;
     transform.set_rotation(getRotation(tr));
   }
 }

@@ -10,7 +10,8 @@ ecs::SystemDescription person_controller_update_descr("person_controller_update"
   {ecs::get_type_description<AnimationTester>("animationTester"), true},
   {ecs::get_type_description<Transform>("transform"), false},
   {ecs::get_type_description<int>("controllerIndex"), true},
-  {ecs::get_type_description<SettingsContainer>("settingsContainer"), false}
+  {ecs::get_type_description<SettingsContainer>("settingsContainer"), false},
+  {ecs::get_type_description<PhysicalObject>("physics"), false}
 }, {
 }, {},
 {},

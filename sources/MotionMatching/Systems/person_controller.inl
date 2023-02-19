@@ -8,6 +8,7 @@
 #include "Animation/Test/animation_tester.h"
 #include <render/debug_arrow.h>
 #include <ecs_event_registration.h>
+#include "Physics/physical_object.h"
 
 ECS_EVENT_REGISTER(ControllerKeyBoardEvent, ControllerKeyBoardEvent)
 ECS_EVENT_REGISTER(ControllerMouseMoveEvent, ControllerMouseMoveEvent)
@@ -97,7 +98,8 @@ SYSTEM(stage=act) person_controller_update(
         AnimationTester *animationTester,
         Transform &transform,
         int *controllerIndex,
-        SettingsContainer &settingsContainer)
+        SettingsContainer &settingsContainer,
+        PhysicalObject &physics)
 {
   const ControllerSettings &settings = settingsContainer.controllerSettings[controllerIndex ? *controllerIndex : 0].second;
 
@@ -106,11 +108,6 @@ SYSTEM(stage=act) person_controller_update(
   bool onPlace;
 
   vec3 speed = get_wanted_speed(input, onPlace, settings);
-  if (animationTester)
-  {
-    //debug_log("[%f, %f, %f]", speed.x, speed.y, speed.z);input.get_key(SDLK_w)
-    //debug_log("[%f]", input.get_key(SDLK_w));
-  }
 
   bool onlySideway = abs(speed.z) < 0.1f && abs(speed.x) > 0.f;
   //bool moveForward = speed.z >= 0.f;
@@ -207,16 +204,17 @@ SYSTEM(stage=act) person_controller_update(
   personController.realPosition = transform.get_position() + transform.get_rotation() * rootDelta * dt;
 
   vec3 positionDelta = personController.simulatedPosition - personController.realPosition;
-  //positionDelta.y = 0.0f; //y is controlled by physics
+  positionDelta.y = 0.0f; //y is controlled by physics
   float errorRadius = length(positionDelta);
   if (errorRadius > settings.maxMoveErrorRadius)
   {
     personController.realPosition += positionDelta * (errorRadius-settings.maxMoveErrorRadius)/errorRadius;
   }
-  float posY = transform.get_position().y;
+
+  float posY = physics.getGlPosition().y;//transform.get_position().y;
   transform.get_position() = personController.realPosition;
   personController.realPosition.y = posY;
-  //transform.get_position().y = posY;
+  transform.get_position().y = posY;
   transform.set_rotation(-personController.realRotation);
 
   draw_transform(transform);

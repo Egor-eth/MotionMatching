@@ -30,7 +30,9 @@ const std::vector<btRigidBody *> &PhysicalObject::getBodies() const
 
 vec3 PhysicalObject::getGlPosition() const
 {
-  return bt2glm(rigidBodies[0]->getCenterOfMassPosition()) - shift;
+  btTransform tr;
+  rigidBodies[0]->getMotionState()->getWorldTransform(tr);
+  return bt2glm(tr.getOrigin()) - shift;
 }
 
 void PhysicalObject::setFromGlTransform(const Transform &transform)
