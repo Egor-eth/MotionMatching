@@ -31,7 +31,7 @@ inline btQuaternion glm2bt_q(const quat &q)
   return {q[0], q[1], q[2], q[3]};
 }
 
-inline quat glm2bt_q(const btQuaternion &q)
+inline quat bt2glm_q(const btQuaternion &q)
 {
   return {q[0], q[1], q[2], q[3]};
 }

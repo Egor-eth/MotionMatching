@@ -56,7 +56,7 @@ void render_box_collider_func();
 ecs::SystemDescription render_box_collider_descr("render_box_collider", {
   {ecs::get_type_description<Settings>("settings"), false}
 }, {
-}, {"game","editor"},
+}, {"game"},
 {"render_sky_box"},
 {"process_mesh_position"},
 render_box_collider_func, "render", {}, false);

@@ -24,11 +24,11 @@ btRigidBody* create_dynamic_rigid_body (btCollisionShape* collisionShape, const 
 
 btTransform &getTransform(btRigidBody *body)
 {
-  if (body->getMotionState()) {
+  /*if (body->getMotionState()) {
     btTransform tr;
     body->getMotionState()->getWorldTransform(tr);
     return tr;
-  }
+  }*/
    return body->getWorldTransform();
 }
 
@@ -48,4 +48,15 @@ mat4x4 getGLTransform(const btRigidBody *body)
   mat4x4 mat;
   tr.getOpenGLMatrix(glm::value_ptr(mat));
   return mat;
+}
+
+quat getRotation(const btTransform &transform) {
+  return bt2glm_q(transform.getRotation());
+}
+
+BoundingBox getBoundingBox(const btRigidBody *body)
+{
+  btVector3 a, b;
+  body->getAabb(a, b);
+  return {bt2glm(a), bt2glm(b)};
 }

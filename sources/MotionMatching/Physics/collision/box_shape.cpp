@@ -18,16 +18,28 @@ void BoxShape::init_physical_object(const Transform &tr,
   btCollisionShape *boxShape = new btBoxShape(glm2bt(size));
   btCompoundShape *shape = new btCompoundShape();
 
-  transform.setIdentity();
-  transform.setOrigin(glm2bt({0, 0, 0}));
+  vec3 sz = vec3(tr.get_transform() * vec4(size, 0));
+
+  Transform tmp;
+  vec3 full_shift = shift;
+  full_shift.y += sz.y;
+  tmp.set_position(full_shift);
+
+  transform.setFromOpenGLMatrix(glm::value_ptr(tmp.get_transform()));
   shape->addChildShape(transform, boxShape);
   collisionShapes.push_back(shape);
   collisionShapes.push_back(boxShape);
 
-  glShift = -shift;
+  glShift = full_shift;
 
-  transform.setFromOpenGLMatrix(glm::value_ptr(tr.get_transform()));
-  btRigidBody *body = isStatic ? create_static_rigid_body(shape, transform) : create_dynamic_rigid_body(shape, transform, mass);
+
+  tmp = tr;
+  tmp.set_scale({1, 1, 1});
+  transform.setIdentity();
+  transform.setFromOpenGLMatrix(glm::value_ptr(tmp.get_transform()));
+  btRigidBody *body = isStatic ?
+          create_static_rigid_body(shape, transform) :
+          create_dynamic_rigid_body(shape, transform, mass);
   rigidBodies.push_back(body);
 }
 

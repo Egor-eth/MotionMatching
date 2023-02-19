@@ -32,6 +32,7 @@ public:
   vec3 get_scale() const;
   void set_rotation(const mat4& rotation);
   void set_rotation(float yaw = 0, float pitch = 0, float roll = 0);
+  void set_rotation(const glm::quat &q);
   void set_position(const vec3 position);
   void set_scale(const vec3 scale);
   std::vector<mat4>& get_bones()

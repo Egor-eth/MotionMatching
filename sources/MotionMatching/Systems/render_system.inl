@@ -139,7 +139,7 @@ template<typename Callable>
 void find_box_shapes(Callable);
 
 
-SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=game, editor) render_box_collider(
+SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=game) render_box_collider(
         const Settings &settings)
 {
   if (!settings.debugCollision)
@@ -155,14 +155,18 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
   QUERY()find_box_shapes([&](const BoxShape &collision, const PhysicalObject &physics)
                                 {
                                   for(btRigidBody *body : physics.getBodies()) {
+                                    mat4x4 buf = mat4x4(1);
                                     mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
                                     Transform tm;
                                     const btTransform &tr = getTransform(body);
-                                    tm.set_position(bt2glm(body->getCenterOfMassPosition()) + collision.shift);
-                                    btQuaternion quat = tr.getRotation();
-                                    tm.set_rotation(quat[0], quat[1], quat[2]);
-                                    tm.set_scale(collision.size);
-                                    *buffer = tm.get_transform();
+                                    vec3 pos = bt2glm(tr.getOrigin()) - collision.shift;
+                                    //if(!physics.isStaticObject())
+                                      //std::cout << "btpos_render = " << pos.x << " " << pos.y << " " << pos.z  << std::endl;
+                                    BoundingBox bbox = getBoundingBox(body);
+                                    tm.set_position(pos);
+                                    tm.set_rotation(getRotation(tr));
+                                    tm.set_scale(bbox.diagonal() / 2.0f);
+                                    *buffer = tm.get_3x4transform();
                                     instanceCount++;
                                   }
                                 });

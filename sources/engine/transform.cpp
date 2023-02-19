@@ -60,6 +60,13 @@ vec3 Transform::get_scale() const
 {
   return scale;
 }
+
+void Transform::set_rotation(const glm::quat &q)
+{
+  this->rotation = glm::mat4_cast(q);
+  calculated = false;
+}
+
 void Transform::set_rotation(float yaw, float pitch, float roll)
 {
   rotation = glm::yawPitchRoll(yaw, pitch, roll);

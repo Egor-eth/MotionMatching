@@ -10,6 +10,7 @@
 #include "Physics/physical_object.h"
 #include "Physics/world.h"
 #include "Physics/bulletutil.h"
+#include <iostream>
 
 //ECS_REGISTER_TYPE(World, World)
 ECS_REGISTER_TYPE(BoxShape, BoxShape, true, true, true, true)
@@ -40,6 +41,8 @@ EVENT(scene=game) init_world(const ecs::OnSceneCreated &,
   world->setGravity(btVector3(0, 0, 0));
 }
 
+
+
 SYSTEM(stage=before_act; scene=game) physics_update(
         World &world)
 {
@@ -57,8 +60,10 @@ SYSTEM(stage=before_act;scene=game; after=physics_update) physics_forward_sync(
     btTransform tr = getTransform(body);
 
     transform.set_position(physics.getGlPosition());
-    btQuaternion quat = tr.getRotation();
-    transform.set_rotation(quat[0], quat[1], quat[2]);
+    vec3 pos = bt2glm(tr.getOrigin());
+   // std::cout.precision(3);
+   // std::cout << "btpos = " << pos.x << " " << pos.y << " " << pos.z  << std::endl;
+    transform.set_rotation(getRotation(tr));
   }
 }
 
@@ -66,5 +71,7 @@ SYSTEM(stage=before_render; scene=game) physics_backward_sync(
         Transform &transform,
         PhysicalObject &physics)
 {
-  physics.setFromGlTransform(transform);
+  if(!physics.isStaticObject()) {
+    physics.setFromGlTransform(transform);
+  }
 }
