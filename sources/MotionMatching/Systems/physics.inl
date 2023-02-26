@@ -70,14 +70,14 @@ SYSTEM(stage=before_render; scene=game) physics_backward_sync(
         Transform &transform,
         PhysicalObject &physics)
 {
-  if(!physics.isStaticObject()) {
+  //if(!physics.isStaticObject()) {
     physics.setFromGlTransform(transform);
     if(physics.getRoot()->getLinearVelocity().isZero()) {
       vec3 pos = bt2glm(getTransform(physics.getRoot()).getOrigin());
       std::cout.precision(4);
-      std::cout << "btpos_bwd = " << pos.x << " " << pos.y << " " << pos.z << std::endl;
+      std::string str = physics.isStaticObject() ? "ground" : "player";
+      std::cout << "btpos_bwd_" << str << " = " << pos.x << " " << pos.y << " " << pos.z << std::endl;
       pos = transform.get_position();
-      std::cout << "glpos_bwd = " << pos.x << " " << pos.y << " " << pos.z << std::endl;
-    }
-  }
+      std::cout << "glpos_bwd_" << str << " = " << pos.x << " " << pos.y << " " << pos.z << std::endl;    }
+  //}
 }

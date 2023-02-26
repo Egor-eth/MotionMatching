@@ -138,7 +138,7 @@ SYSTEM(stage=render;scene=game, editor) debug_physics(
 template<typename Callable>
 void find_box_shapes(Callable);
 
-
+//Need to shift hitboxes by right value
 SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=game) render_box_collider(
         const Settings &settings)
 {
@@ -165,7 +165,9 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
                                     BoundingBox bbox = getBoundingBox(body);
 
                                     vec3 size = bbox.diagonal() / 2.0f;
-                                    pos.y += size.y;
+                                    if(!collision.isStatic) {
+                                      pos.y += size.y;
+                                    }
 
                                     tm.set_position(pos);
                                     tm.set_rotation(getRotation(tr));

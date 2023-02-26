@@ -14,31 +14,30 @@ void BoxShape::init_physical_object(const Transform &tr,
                                     std::vector<btTypedConstraint *> &,
                                     vec3 &glShift) const
 {
+  vec3 sz = size / 2.0f;
   btTransform transform;
-  btCollisionShape *boxShape = new btBoxShape(glm2bt(size));
+  btCollisionShape *boxShape = new btBoxShape(glm2bt(sz));
   boxShape->setLocalScaling(glm2bt(tr.get_scale()));
   btCompoundShape *shape = new btCompoundShape();
 
-  vec3 sz = vec3(tr.get_transform() * vec4(size, 0));
+  float center_shift = sz.y * tr.get_scale().y;
 
-  Transform tmp;
   vec3 full_shift = shift;
-  full_shift.y += sz.y; // ?
+  if(!isStatic) {
+    full_shift.y += center_shift; // ?
+  }
 
-  tmp.set_position(full_shift);
-
-  transform.setFromOpenGLMatrix(glm::value_ptr(tmp.get_transform()));
+  transform.setIdentity();
+  transform.setOrigin(glm2bt(full_shift));
   shape->addChildShape(transform, boxShape);
   collisionShapes.push_back(shape);
   collisionShapes.push_back(boxShape);
 
-  glShift = full_shift;
+  glShift = {0, 0 ,0};// full_shift;
 
-
-  tmp = tr;
-  tmp.set_scale({1, 1, 1});
   transform.setIdentity();
-  transform.setFromOpenGLMatrix(glm::value_ptr(tmp.get_transform()));
+  transform.setOrigin(glm2bt(tr.get_position() + full_shift));
+  transform.setRotation(glm2bt_q(glm::quat_cast(tr.get_rotation())));
   btRigidBody *body = isStatic ?
           create_static_rigid_body(shape, transform) :
           create_dynamic_rigid_body(shape, transform, mass);

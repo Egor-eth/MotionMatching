@@ -16,8 +16,9 @@ ground {
   }
   physics:PhysicalObject {}
   collision:BoxShape {
-    size:f3 = 1, 0, 1;
+    size:f3 = 2, 2, 2;
     mass:f = 0;
     isStatic:b = true;
+    shift:f3 = 0, -1, 0;
   }
 }
