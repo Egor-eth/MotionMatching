@@ -9,6 +9,7 @@
 #include <render/debug_arrow.h>
 #include <ecs_event_registration.h>
 #include "Physics/physical_object.h"
+#include "Physics/bulletutil.h"
 
 ECS_EVENT_REGISTER(ControllerKeyBoardEvent, ControllerKeyBoardEvent)
 ECS_EVENT_REGISTER(ControllerMouseMoveEvent, ControllerMouseMoveEvent)
@@ -220,6 +221,7 @@ SYSTEM(stage=act) person_controller_update(
   draw_transform(transform);
 
 }
+
 
 EVENT() controller_mouse_move_handler(
         const ControllerMouseMoveEvent &e,

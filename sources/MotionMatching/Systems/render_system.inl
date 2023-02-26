@@ -157,15 +157,20 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
                                   for(btRigidBody *body : physics.getBodies()) {
                                     mat4x4 buf = mat4x4(1);
                                     mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
+
                                     Transform tm;
                                     const btTransform &tr = getTransform(body);
-                                    vec3 pos = bt2glm(tr.getOrigin()) - collision.shift;
-                                    //if(!physics.isStaticObject())
-                                      //std::cout << "btpos_render = " << pos.x << " " << pos.y << " " << pos.z  << std::endl;
+                                    vec3 pos = bt2glm(tr.getOrigin());
+
                                     BoundingBox bbox = getBoundingBox(body);
+
+                                    vec3 size = bbox.diagonal() / 2.0f;
+                                    pos.y += size.y;
+
                                     tm.set_position(pos);
                                     tm.set_rotation(getRotation(tr));
-                                    tm.set_scale(bbox.diagonal() / 2.0f);
+                                    tm.set_scale(size);
+
                                     *buffer = tm.get_3x4transform();
                                     instanceCount++;
                                   }

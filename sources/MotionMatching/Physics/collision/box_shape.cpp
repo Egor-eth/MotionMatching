@@ -16,13 +16,15 @@ void BoxShape::init_physical_object(const Transform &tr,
 {
   btTransform transform;
   btCollisionShape *boxShape = new btBoxShape(glm2bt(size));
+  boxShape->setLocalScaling(glm2bt(tr.get_scale()));
   btCompoundShape *shape = new btCompoundShape();
 
   vec3 sz = vec3(tr.get_transform() * vec4(size, 0));
 
   Transform tmp;
   vec3 full_shift = shift;
-  full_shift.y += sz.y;
+  full_shift.y += sz.y; // ?
+
   tmp.set_position(full_shift);
 
   transform.setFromOpenGLMatrix(glm::value_ptr(tmp.get_transform()));

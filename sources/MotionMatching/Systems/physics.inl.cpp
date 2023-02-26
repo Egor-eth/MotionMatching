@@ -5,7 +5,6 @@
 void physics_update_func();
 
 ecs::SystemDescription physics_update_descr("physics_update", {
-  {ecs::get_type_description<World>("world"), false}
 }, {
 }, {"game"},
 {},
@@ -56,12 +55,11 @@ ecs::EventDescription init_static_box_descr(
   ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_static_box", {
   {ecs::get_type_description<PhysicalObject>("physics"), false},
   {ecs::get_type_description<BoxShape>("collision"), false},
-  {ecs::get_type_description<Transform>("transform"), true},
-  {ecs::get_type_description<World>("world"), false}
+  {ecs::get_type_description<Transform>("transform"), true}
 }, {
 }, {"game"},
 {},
-{},
+{"init_world"},
 init_static_box_handler, init_static_box_singl_handler, {});
 
 void init_static_box_handler(const ecs::Event &event)
@@ -80,12 +78,11 @@ ecs::EventDescription init_ragdoll_descr(
   ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_ragdoll", {
   {ecs::get_type_description<PhysicalObject>("physics"), false},
   {ecs::get_type_description<RagdollChar>("collision"), false},
-  {ecs::get_type_description<Transform>("transform"), true},
-  {ecs::get_type_description<World>("world"), false}
+  {ecs::get_type_description<Transform>("transform"), true}
 }, {
 }, {"game"},
 {},
-{},
+{"init_world"},
 init_ragdoll_handler, init_ragdoll_singl_handler, {});
 
 void init_ragdoll_handler(const ecs::Event &event)
@@ -102,7 +99,6 @@ void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid);
 
 ecs::EventDescription init_world_descr(
   ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_world", {
-  {ecs::get_type_description<World>("world"), false}
 }, {
 }, {"game"},
 {},
