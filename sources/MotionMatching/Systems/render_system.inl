@@ -154,15 +154,15 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
   uint instanceCount = 0;
   QUERY()find_box_shapes([&](const BoxShape &collision, const PhysicalObject &physics)
                                 {
-                                  for(btRigidBody *body : physics.getBodies()) {
+                                  for(auto *body : physics.getBodies()) {
                                     mat4x4 buf = mat4x4(1);
                                     mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
 
                                     Transform tm;
-                                    const btTransform &tr = getTransform(body);
+                                    const btTransform &tr = getTransform(body->get());
                                     vec3 pos = bt2glm(tr.getOrigin());
 
-                                    BoundingBox bbox = getBoundingBox(body);
+                                    BoundingBox bbox = getBoundingBox(body->get());
 
                                     vec3 size = bbox.diagonal() / 2.0f;
                                     if(!collision.isStatic) {

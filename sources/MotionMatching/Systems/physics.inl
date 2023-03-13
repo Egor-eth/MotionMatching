@@ -14,7 +14,7 @@
 
 //ECS_REGISTER_TYPE(World, World)
 ECS_REGISTER_TYPE(BoxShape, BoxShape, true, true, true, true)
-ECS_REGISTER_TYPE(RagdollChar, RagdollChar)
+//ECS_REGISTER_TYPE(RagdollChar, RagdollChar)
 ECS_REGISTER_TYPE(PhysicalObject, PhysicalObject)
 
 EVENT(scene=game) init_world(const ecs::OnSceneCreated &)
@@ -31,31 +31,31 @@ EVENT(scene=game; after=init_world) init_static_box(const ecs::OnSceneCreated &,
                                   const Transform *transform)
 {
   physics.init(ecs::get_singleton<World>(), transform == nullptr ? Transform() : *transform, collision);
- // physics.getRoot()->applyCentralForce(btVector3(0, -10, 0));
   debug_log("Added BoxShape collision body");
 }
 
-EVENT(scene=game; after=init_world) init_ragdoll(const ecs::OnSceneCreated &,
+/*E_VENT(scene=game; after=init_world) init_ragdoll(const ecs::OnSceneCreated &,
                                   PhysicalObject &physics,
                                   const RagdollChar &collision,
                                   const Transform *transform)
 {
   physics.init(ecs::get_singleton<World>(), transform == nullptr ? Transform() : *transform, collision);
-}
+}*/
 
-SYSTEM(stage=before_act; scene=game) physics_update()
+SYSTEM(stage=before_act; after=init_world; scene=game) physics_update()
 {
   //usleep(50);
   World &world = ecs::get_singleton<World>();
   float dt = Time::delta_time();
-  world->stepSimulation(dt, 10);
+  world->stepSimulation(dt, 20);
+  std::cout << world->getDispatcher()->getNumManifolds() << std::endl;
 }
 
 SYSTEM(stage=before_act;scene=game; after=physics_update) physics_forward_sync(
         Transform &transform,
         PhysicalObject &physics)
 {
-  if(!physics.isStaticObject()) {
+  if(!physics.getRoot()->isStaticObject()) {
     btRigidBody *body = physics.getRoot();
     btTransform tr = getTransform(body);
 
@@ -72,12 +72,5 @@ SYSTEM(stage=before_render; scene=game) physics_backward_sync(
 {
   //if(!physics.isStaticObject()) {
     physics.setFromGlTransform(transform);
-    if(physics.getRoot()->getLinearVelocity().isZero()) {
-      vec3 pos = bt2glm(getTransform(physics.getRoot()).getOrigin());
-      std::cout.precision(4);
-      std::string str = physics.isStaticObject() ? "ground" : "player";
-      std::cout << "btpos_bwd_" << str << " = " << pos.x << " " << pos.y << " " << pos.z << std::endl;
-      pos = transform.get_position();
-      std::cout << "glpos_bwd_" << str << " = " << pos.x << " " << pos.y << " " << pos.z << std::endl;    }
   //}
 }

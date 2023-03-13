@@ -88,7 +88,7 @@ struct MMProfiler : ecs::Singleton
   }
 };
 
-SYSTEM(stage=act;before=animation_player_update; require_not=RagdollChar collision) motion_matching_update(
+SYSTEM(stage=act;before=animation_player_update) motion_matching_update(
   Transform &transform,
   AnimationPlayer &animationPlayer,
   Asset<Material> &material,

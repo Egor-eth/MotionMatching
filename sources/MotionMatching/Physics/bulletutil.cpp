@@ -18,7 +18,6 @@ btRigidBody* create_dynamic_rigid_body (btCollisionShape* collisionShape, const 
   btDefaultMotionState* motionState = new btDefaultMotionState(startTransform);
   btRigidBody::btRigidBodyConstructionInfo constructionInfo(mass, motionState, collisionShape, localInertia);
   btRigidBody* body = new btRigidBody(constructionInfo);
- // body->setDamping(2.0, 2.0); //damping
   return body;
 }
 

@@ -2,6 +2,7 @@
 #include <bullet/btBulletDynamicsCommon.h>
 #include <vector>
 #include <transform.h>
+#include "rigid_body.h"
 
 class PhysicalObject {
 public:
@@ -11,31 +12,31 @@ public:
   void init(btDiscreteDynamicsWorld *w, const Transform &tr, const T& obj)
   {
     world = w;
-    obj.init_physical_object(tr, collisionShapes, rigidBodies, constraints, shift);
+    obj.init_physical_object(*this, tr, rigidBodies, constraints, shift);
     for(auto body : rigidBodies) {
-      world->addRigidBody(body);
+      world->addRigidBody(body->get());
     }
     for(auto constraint : constraints) {
       world->addConstraint(constraint, true);
     }
-    isStatic = obj.isStatic;
     for(auto body : rigidBodies) {
-      body->forceActivationState(ACTIVE_TAG);
-      body->activate();
+      body->get()->setRestitution(0.0f);
+      body->get()->setFriction(0.0f);
+      body->get()->forceActivationState(ACTIVE_TAG);
+      body->get()->activate();
     }
   }
 
   btDiscreteDynamicsWorld *get_world() const;
-  const std::vector<btRigidBody *> &getBodies() const;
+  const std::vector<RigidBody*> &getBodies() const;
 
-  btRigidBody *getRoot()
+  RigidBody &getRoot()
   {
-    return rigidBodies[0];
+    return *rigidBodies[0];
   }
 
-  bool isStaticObject() const
-  {
-    return isStatic;
+  const btTransform &getRootTransform() {
+    return rigidBodies[0]->getTransform();
   }
 
   vec3 getGlPosition() const;
@@ -43,9 +44,7 @@ public:
 
 private:
   btDiscreteDynamicsWorld *world;
-  std::vector<btCollisionShape *> collisionShapes;
-  std::vector<btRigidBody *> rigidBodies;
-  std::vector<btTypedConstraint *> constraints;
-  bool isStatic = true;
+  std::vector<RigidBody*> rigidBodies;
+  std::vector<btTypedConstraint*> constraints;
   vec3 shift;
 };

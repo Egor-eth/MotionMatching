@@ -1,5 +1,5 @@
 #include "ragdoll_char.h"
-
+/*
 RagdollChar::RagdollChar()
         : mass(10.0f)
 {
@@ -28,5 +28,5 @@ void RagdollChar::init_physical_object(const Transform &tr,
   transform.setFromOpenGLMatrix(glm::value_ptr(tr.get_transform()));
   btRigidBody *body = isStatic ? create_static_rigid_body(shape, transform) : create_dynamic_rigid_body(shape, transform, mass);
   rigidBodies.push_back(body);
-   */
-}
+
+}*/

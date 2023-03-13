@@ -8,7 +8,7 @@ ecs::SystemDescription physics_update_descr("physics_update", {
 }, {
 }, {"game"},
 {},
-{},
+{"init_world"},
 physics_update_func, "before_act", {}, false);
 
 void physics_update_func()
@@ -48,6 +48,26 @@ void physics_backward_sync_func()
   ecs::perform_system(physics_backward_sync_descr, physics_backward_sync);
 }
 
+void init_world_handler(const ecs::Event &event);
+void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid);
+
+ecs::EventDescription init_world_descr(
+  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_world", {
+}, {
+}, {"game"},
+{},
+{},
+init_world_handler, init_world_singl_handler, {});
+
+void init_world_handler(const ecs::Event &event)
+{
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_world_descr, init_world);
+}
+void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid)
+{
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_world_descr, eid, init_world);
+}
+
 void init_static_box_handler(const ecs::Event &event);
 void init_static_box_singl_handler(const ecs::Event &event, ecs::EntityId eid);
 
@@ -69,49 +89,6 @@ void init_static_box_handler(const ecs::Event &event)
 void init_static_box_singl_handler(const ecs::Event &event, ecs::EntityId eid)
 {
   ecs::perform_event((const ecs::OnSceneCreated&)event, init_static_box_descr, eid, init_static_box);
-}
-
-void init_ragdoll_handler(const ecs::Event &event);
-void init_ragdoll_singl_handler(const ecs::Event &event, ecs::EntityId eid);
-
-ecs::EventDescription init_ragdoll_descr(
-  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_ragdoll", {
-  {ecs::get_type_description<PhysicalObject>("physics"), false},
-  {ecs::get_type_description<RagdollChar>("collision"), false},
-  {ecs::get_type_description<Transform>("transform"), true}
-}, {
-}, {"game"},
-{},
-{"init_world"},
-init_ragdoll_handler, init_ragdoll_singl_handler, {});
-
-void init_ragdoll_handler(const ecs::Event &event)
-{
-  ecs::perform_event((const ecs::OnSceneCreated&)event, init_ragdoll_descr, init_ragdoll);
-}
-void init_ragdoll_singl_handler(const ecs::Event &event, ecs::EntityId eid)
-{
-  ecs::perform_event((const ecs::OnSceneCreated&)event, init_ragdoll_descr, eid, init_ragdoll);
-}
-
-void init_world_handler(const ecs::Event &event);
-void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid);
-
-ecs::EventDescription init_world_descr(
-  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_world", {
-}, {
-}, {"game"},
-{},
-{},
-init_world_handler, init_world_singl_handler, {});
-
-void init_world_handler(const ecs::Event &event)
-{
-  ecs::perform_event((const ecs::OnSceneCreated&)event, init_world_descr, init_world);
-}
-void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid)
-{
-  ecs::perform_event((const ecs::OnSceneCreated&)event, init_world_descr, eid, init_world);
 }
 
 

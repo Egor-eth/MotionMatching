@@ -3,19 +3,15 @@
 
 PhysicalObject::~PhysicalObject()
 {
+  for(auto elem : rigidBodies) {
+    delete elem;
+  }
   for(auto elem : constraints){
     world->removeConstraint(elem);
     delete elem;
   }
-  for(auto elem : rigidBodies) {
-    world->removeRigidBody(elem);
-    delete elem->getMotionState();
-    delete elem;
-  }
-  for(auto elem : collisionShapes) delete elem;
   constraints.clear();
   rigidBodies.clear();
-  collisionShapes.clear();
 }
 
 btDiscreteDynamicsWorld *PhysicalObject::get_world() const
@@ -23,7 +19,7 @@ btDiscreteDynamicsWorld *PhysicalObject::get_world() const
   return world;
 }
 
-const std::vector<btRigidBody *> &PhysicalObject::getBodies() const
+const std::vector<RigidBody *> &PhysicalObject::getBodies() const
 {
   return rigidBodies;
 }
@@ -31,7 +27,7 @@ const std::vector<btRigidBody *> &PhysicalObject::getBodies() const
 vec3 PhysicalObject::getGlPosition() const
 {
   btTransform tr;
-  rigidBodies[0]->getMotionState()->getWorldTransform(tr);
+  rigidBodies[0]->get()->getMotionState()->getWorldTransform(tr);
   return bt2glm(tr.getOrigin()) - shift;
 }
 

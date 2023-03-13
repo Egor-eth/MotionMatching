@@ -4,7 +4,7 @@
 #include <vector>
 #include "Physics/physical_object.h"
 #include <transform.h>
-
+/*
 class RagdollChar {
 public:
   REFLECT(RagdollChar,
@@ -17,4 +17,4 @@ public:
                             std::vector<btRigidBody *> &,
                             std::vector<btTypedConstraint *> &,
                             vec3 &shift) const;
-};
+};*/

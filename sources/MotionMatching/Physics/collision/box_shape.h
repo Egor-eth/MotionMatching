@@ -16,9 +16,9 @@ public:
 
   BoxShape();
 
-  void init_physical_object(const Transform &,
-                            std::vector<btCollisionShape *> &,
-                            std::vector<btRigidBody *> &,
+  void init_physical_object(PhysicalObject& owner,
+                            const Transform &,
+                            std::vector<RigidBody *> &,
                             std::vector<btTypedConstraint *> &,
                             vec3 &shift) const;
 };

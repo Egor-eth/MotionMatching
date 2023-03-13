@@ -20,5 +20,5 @@ entity {
 }
 
 entity {
-  _template:t="ragdoll_char";
+  _template:t="test_cube";
 }
