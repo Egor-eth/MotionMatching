@@ -23,7 +23,6 @@ EVENT(scene=game) init_world(const ecs::OnSceneCreated &)
   World &world = ecs::get_singleton<World>();
   world->setGravity(btVector3(0, -10, 0));
   world.markInit();
-  std::cout.precision(5);
   debug_log("World created");
 
 }

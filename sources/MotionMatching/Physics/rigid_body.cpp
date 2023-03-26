@@ -1,9 +1,8 @@
 #include "rigid_body.h"
 
-RigidBody::RigidBody(PhysicalObject &owner, std::vector<btCollisionShape *>shapes, btTransform ownerTransform, btTransform relativeTr, float mass)
-  : body(), shapes(shapes), relativeTransform(relativeTr), owner(owner)
+RigidBody::RigidBody(PhysicalObject &owner, btCollisionShape *shape, btTransform ownerTransform, btTransform relativeTr, float mass)
+  : body(), relativeTransform(relativeTr), owner(owner)
 {
-  btCollisionShape *shape = shapes[0];
   btTransform tr = ownerTransform * relativeTr;
   btVector3 localInertia(0.0f, 0.0f, 0.0f);
 
@@ -28,9 +27,6 @@ RigidBody::~RigidBody()
 {
   delete body->getMotionState();
   delete body;
-  for(btCollisionShape *shape : shapes) {
-    delete shape;
-  }
 }
 
 PhysicalObject &RigidBody::getOwner() const

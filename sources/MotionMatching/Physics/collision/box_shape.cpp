@@ -1,6 +1,8 @@
 #include "box_shape.h"
 #include "Physics/rigid_body.h"
 #include "Physics/bulletutil.h"
+#include "Physics/collision/shape_provider.h"
+#include <ecs_core.h>
 
 
 BoxShape::BoxShape()
@@ -17,22 +19,16 @@ void BoxShape::init_physical_object(PhysicalObject &owner,
                                     std::vector<btTypedConstraint *> &,
                                     vec3 &glShift) const
 {
-  vec3 sz = size / 2.0f;
   btTransform transform;
 
-
-  btCollisionShape *boxShape = new btBoxShape(glm2bt(sz));
- // boxShape->setMargin(0.05f);
-  boxShape->setLocalScaling(glm2bt(tr.get_scale()));
-  btCompoundShape *shape = new btCompoundShape();
-
+  const vec3 sz = size / 2.0f;
   const vec3 center_shift = {0, sz.y * tr.get_scale().y, 0};
-
   const vec3 full_shift = shift + center_shift;
 
-  transform.setIdentity();
-  transform.setOrigin(glm2bt(full_shift));
-  shape->addChildShape(transform, boxShape);
+  ShapePool &pool = ecs::get_singleton<ShapePool>();
+
+  btCollisionShape *shape = pool.shiftedShape(pool.getBoxShape(glm2bt(size), glm2bt(tr.get_scale())),
+                                              glm2bt(full_shift));
 
   glShift = full_shift;
 
@@ -42,7 +38,7 @@ void BoxShape::init_physical_object(PhysicalObject &owner,
 
   btTransform relativeTr = createIdentity();
   //relativeTr.setOrigin(glm2bt(full_shift));
-  RigidBody *body = new RigidBody(owner, std::vector<btCollisionShape *>({shape, boxShape}), transform, relativeTr, mass);
+  RigidBody *body = new RigidBody(owner, shape, transform, relativeTr, mass);
   RigidBody &ref = *body;
   btVector3 revInv = ref->getInvInertiaDiagLocal();
   if(zeroInvInertiaX) revInv.setX(0.0f);

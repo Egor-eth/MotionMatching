@@ -44,6 +44,14 @@ test_cube2 {
   }
 }
 
+test_cube3 {
+  _extends:t = "test_cube";
+  transform:Transform {
+    position:f3 = 1, 6, 0.2;
+    scale:f3 = 0.5, 0.5, 0.5;
+  }
+}
+
 
 ground {
   _extends:t = "plane";
