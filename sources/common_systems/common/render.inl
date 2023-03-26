@@ -101,9 +101,12 @@ frustum_culling(
   bool &is_visible,
   bool is_enabled)
 {
-  if (mesh && mesh.loaded() && is_enabled)
-    is_visible = isOnFrustum(mainCamera.mainFrustum, transform.get_position(), 
-        (transform.get_scale() * mesh->get_bounding_box().diagonal()).length() * 0.5f);
+
+  if (mesh && mesh.loaded() && is_enabled) {
+    vec3 pos = transform.get_position();
+    is_visible = isOnFrustum(mainCamera.mainFrustum, pos,
+                             (transform.get_scale() * mesh->get_bounding_box().diagonal()).length() * 0.5f);
+  }
   else
     is_visible = false;
 }

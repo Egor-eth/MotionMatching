@@ -27,8 +27,8 @@ const std::vector<RigidBody *> &PhysicalObject::getBodies() const
 vec3 PhysicalObject::getGlPosition() const
 {
   btTransform tr;
-  rigidBodies[0]->get()->getMotionState()->getWorldTransform(tr);
-  return bt2glm(tr.getOrigin()) - shift;
+  rigidBodies[0]->getMotionStateTransform();
+  return bt2glm(tr.getOrigin());
 }
 
 void PhysicalObject::setFromGlTransform(const Transform &transform)
@@ -37,7 +37,8 @@ void PhysicalObject::setFromGlTransform(const Transform &transform)
   tr.setIdentity();
 
   tr.setRotation(glm2bt_q(glm::quat_cast(transform.get_rotation())));
-  tr.setOrigin(glm2bt(transform.get_position() + shift));
+  tr.setOrigin(glm2bt(transform.get_position()));
+
 
   btRigidBody *root = getRoot();
   root->setWorldTransform(tr);

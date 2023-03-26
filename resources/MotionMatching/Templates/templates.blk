@@ -10,7 +10,7 @@ mm_manager {
 
 test_cube {
   transform:Transform {
-    position:f3 = 1, 10, 1;
+    position:f3 = 1, 0, 1;
     scale:f3 = 0.5, 0.5, 0.5;
   }
 
@@ -24,7 +24,23 @@ test_cube {
   physics:PhysicalObject {}
   collision:BoxShape {
     size:f3 = 2, 2, 2;
+    mass:f = 5;
+    linDamping:f = 0.3;
+    angDamping:f = 0.2;
+  }
+}
+
+test_cube2 {
+  _extends:t = "test_cube";
+  transform:Transform {
+    position:f3 = 1, 100, 1.4;
+    scale:f3 = 1.5, 1.5, 1.5;
+  }
+  collision:BoxShape {
+    size:f3 = 2, 2, 2;
     mass:f = 10;
+    linDamping:f = 0.3;
+    angDamping:f = 0.2;
   }
 }
 
@@ -32,7 +48,7 @@ test_cube {
 ground {
   _extends:t = "plane";
   transform:Transform {
-    scale:f3 = 10, 1, 10;
+    scale:f3 = 100, 1, 100;
     position:f3 = 0, 0, 0;
   }
   physics:PhysicalObject {}

@@ -23,11 +23,11 @@ btRigidBody* create_dynamic_rigid_body (btCollisionShape* collisionShape, const 
 
 btTransform &getTransform(btRigidBody *body)
 {
-  /*if (body->getMotionState()) {
+  if (body->getMotionState()) {
     btTransform tr;
     body->getMotionState()->getWorldTransform(tr);
     return tr;
-  }*/
+  }
    return body->getWorldTransform();
 }
 
@@ -58,4 +58,11 @@ BoundingBox getBoundingBox(const btRigidBody *body)
   btVector3 a, b;
   body->getAabb(a, b);
   return {bt2glm(a), bt2glm(b)};
+}
+
+btTransform createIdentity()
+{
+  btTransform tr;
+  tr.setIdentity();
+  return tr;
 }

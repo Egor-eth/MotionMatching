@@ -10,6 +10,7 @@
 #include "Physics/bulletutil.h"
 #include "resources/resources.h"
 #include "profiler/profiler.h"
+#include "Physics/world.h"
 
 
 SYSTEM(stage=render;scene=game, editor) process_animation(
@@ -144,6 +145,8 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
 {
   if (!settings.debugCollision)
     return;
+
+
   Asset<Mesh> cube = cube_mesh(false);
   Asset<Material> collisionMat = get_resource<Material>("collision");
   if (!cube || !collisionMat)
@@ -159,7 +162,7 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
                                     mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
 
                                     Transform tm;
-                                    const btTransform &tr = getTransform(body->get());
+                                    btTransform tr = body->getMotionStateTransform();
                                     vec3 pos = bt2glm(tr.getOrigin());
 
                                     BoundingBox bbox = getBoundingBox(body->get());

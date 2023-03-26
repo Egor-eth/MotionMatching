@@ -1,8 +1,9 @@
 #ifndef MOTIONMATCHING_DEBUG_DRAWER_H
 #define MOTIONMATCHING_DEBUG_DRAWER_H
 #include "LinearMath/btIDebugDraw.h"
+#include "ecs.h"
 
-class DebugDrawer : public btIDebugDraw
+class DebugDrawer : public btIDebugDraw, public ecs::Singleton
 {
 public:
 

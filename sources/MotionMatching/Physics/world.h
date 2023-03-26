@@ -22,10 +22,21 @@ public:
     return world;
   }
 
+  void markInit()
+  {
+    initDone = true;
+  }
+
+  bool initialized() const
+  {
+    return initDone;
+  }
+
 private:
   btDefaultCollisionConfiguration * const collisionConfig;
   btCollisionDispatcher * const dispatcher;
   btBroadphaseInterface * const overlappingPairCache;
   btSequentialImpulseConstraintSolver * const constsicSolver;
   btDiscreteDynamicsWorld *const world;
+  bool initDone = false;
 };

@@ -191,6 +191,7 @@ namespace ecs
 
   void destroy_entity(const EntityId &eid)
   {
+    debug_log("Removed entity with id %i", eid.array_index());
     return entityManager->destroy_entity(eid);
   }
 

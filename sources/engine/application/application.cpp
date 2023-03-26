@@ -9,6 +9,7 @@
 #include "ecs/ecs_scene.h"
 #include "application_metainfo.h"
 #include "memory/tmp_allocator.h"
+#include <mutex>
 
 namespace ecs
 {
@@ -16,6 +17,8 @@ namespace ecs
 }
 void create_all_resources_from_metadata();
 void save_all_resources_to_metadata();
+
+static std::mutex jobsMutex;
 
 Application::Application(const std::string &project_name,const std::string &root, int width, int height, bool full_screen):
 context(project_name, width, height, full_screen), timer(), scene(new ecs::SceneManager()),
@@ -103,13 +106,19 @@ void Application::main_loop()
     get_cpu_profiler().start_frame();
     PROFILER(main_loop);
     timer.update();
-    uint mainThreadJobsCount = mainThreadJobs.size();
-    if (mainThreadJobsCount > 0)
-    {
+
+    std::unique_lock<std::mutex> lock(jobsMutex);
+    auto jobs = std::move(mainThreadJobs);
+    mainThreadJobs.clear();
+    lock.unlock();
+    for(auto &job: jobs) {
+      job();
+    }
+    /*
       for (uint i = 0; i < mainThreadJobsCount; i++)
         mainThreadJobs[i]();
       mainThreadJobs.erase(mainThreadJobs.begin(), mainThreadJobs.begin() + mainThreadJobsCount);
-    }
+*/
     PROFILER(sdl_events) 
 		running = sdl_event_handler();
     sdl_events.stop();
@@ -179,6 +188,7 @@ std::string root_path()
 
 void add_main_thread_job(std::function<void()> &&job)
 {
+  std::unique_lock<std::mutex> lock(jobsMutex);
   Application::instance().mainThreadJobs.emplace_back(std::move(job));
 }
 

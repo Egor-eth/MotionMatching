@@ -10,6 +10,7 @@ btRigidBody* create_dynamic_rigid_body (btCollisionShape* collisionShape, const 
 btTransform &getTransform(btRigidBody *);
 const btTransform &getTransform(const btRigidBody *);
 
+btTransform createIdentity();
 
 mat4x4 getGLTransform(const btRigidBody *body);
 quat getRotation(const btTransform &transform);

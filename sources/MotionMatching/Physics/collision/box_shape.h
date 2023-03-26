@@ -12,7 +12,14 @@ public:
           (vec3) (size),
           (vec3) (shift),
           (float) (mass),
-          (bool) (isStatic))
+          (bool) (isStatic),
+          (bool) (zeroInvInertiaX),
+          (bool) (zeroInvInertiaY),
+          (bool) (zeroInvInertiaZ),
+          (float) (linDamping),
+          (float) (angDamping),
+          (float) (restitution),
+          (float) (friction))
 
   BoxShape();
 

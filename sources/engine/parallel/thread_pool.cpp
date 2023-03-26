@@ -5,6 +5,7 @@
 #include <atomic>
 #include <thread>
 
+
 struct thread_pool {
   // the mutex, condition variable and deque form a single
   // thread-safe triggered queue of tasks:

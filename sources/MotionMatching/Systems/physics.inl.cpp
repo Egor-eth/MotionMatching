@@ -8,7 +8,7 @@ ecs::SystemDescription physics_update_descr("physics_update", {
 }, {
 }, {"game"},
 {},
-{"init_world"},
+{},
 physics_update_func, "before_act", {}, false);
 
 void physics_update_func()
@@ -36,7 +36,8 @@ void physics_backward_sync_func();
 
 ecs::SystemDescription physics_backward_sync_descr("physics_backward_sync", {
   {ecs::get_type_description<Transform>("transform"), false},
-  {ecs::get_type_description<PhysicalObject>("physics"), false}
+  {ecs::get_type_description<PhysicalObject>("physics"), false},
+  {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false}
 }, {
 }, {"game"},
 {},
@@ -75,7 +76,7 @@ ecs::EventDescription init_static_box_descr(
   ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_static_box", {
   {ecs::get_type_description<PhysicalObject>("physics"), false},
   {ecs::get_type_description<BoxShape>("collision"), false},
-  {ecs::get_type_description<Transform>("transform"), true}
+  {ecs::get_type_description<Transform>("transform"), false}
 }, {
 }, {"game"},
 {},

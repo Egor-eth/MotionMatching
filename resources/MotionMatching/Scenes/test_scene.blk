@@ -22,3 +22,7 @@ entity {
 entity {
   _template:t="test_cube";
 }
+
+entity {
+  _template:t="test_cube2";
+}

@@ -1,6 +1,6 @@
 #include "rigid_body.h"
 
-RigidBody::RigidBody(PhysicalObject &owner, std::vector<btCollisionShape *>shapes, const btTransform &ownerTransform, const btTransform &relativeTr, float mass)
+RigidBody::RigidBody(PhysicalObject &owner, std::vector<btCollisionShape *>shapes, btTransform ownerTransform, btTransform relativeTr, float mass)
   : body(), shapes(shapes), relativeTransform(relativeTr), owner(owner)
 {
   btCollisionShape *shape = shapes[0];
@@ -15,14 +15,13 @@ RigidBody::RigidBody(PhysicalObject &owner, std::vector<btCollisionShape *>shape
   btDefaultMotionState* motionState = new btDefaultMotionState(tr);
   btRigidBody::btRigidBodyConstructionInfo constructionInfo(mass, motionState, shape, localInertia);
   body = new btRigidBody(constructionInfo);
-  if(mass == 0.0f) {
-    body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
+
+
+
+  if(body->isStaticObject()) {
+
   }
 
-  btVector3 inv_inertia = body->getInvInertiaDiagLocal();
-  inv_inertia.setX(0.0f);
-  inv_inertia.setZ(0.0f);
-  body->setInvInertiaDiagLocal(inv_inertia);
 }
 
 RigidBody::~RigidBody()
@@ -34,12 +33,22 @@ RigidBody::~RigidBody()
   }
 }
 
-PhysicalObject &RigidBody::getOwner() const {
+PhysicalObject &RigidBody::getOwner() const
+{
   return owner;
 }
 
-btTransform &RigidBody::getTransform() {
+btTransform &RigidBody::getTransform()
+{
   return body->getWorldTransform();
+}
+
+btTransform RigidBody::getMotionStateTransform() const
+{
+  btTransform tr;
+  if(body->isStaticObject()) return body->getWorldTransform();
+  body->getMotionState()->getWorldTransform(tr);
+  return tr;
 }
 
 const btTransform &RigidBody::getRelativeTransform() const {

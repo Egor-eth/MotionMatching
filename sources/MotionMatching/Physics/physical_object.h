@@ -42,9 +42,9 @@ public:
   vec3 getGlPosition() const;
   void setFromGlTransform(const Transform &);
 
+  vec3 shift;
 private:
   btDiscreteDynamicsWorld *world;
   std::vector<RigidBody*> rigidBodies;
   std::vector<btTypedConstraint*> constraints;
-  vec3 shift;
 };
