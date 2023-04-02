@@ -3,7 +3,7 @@
 //Code-generator production
 
 ecs::QueryDescription find_box_shapes_descr("find_box_shapes", {
-  {ecs::get_type_description<BoxShape>("collision"), false},
+  {ecs::get_type_description<BodyGenerator>("collision"), false},
   {ecs::get_type_description<PhysicalObject>("physics"), false}
 }, {
 });
@@ -11,7 +11,7 @@ ecs::QueryDescription find_box_shapes_descr("find_box_shapes", {
 template<typename Callable>
 void find_box_shapes(Callable lambda)
 {
-  ecs::perform_query<BoxShape&, PhysicalObject&>
+  ecs::perform_query<BodyGenerator&, PhysicalObject&>
   (find_box_shapes_descr, lambda);
 }
 

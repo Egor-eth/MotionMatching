@@ -7,15 +7,14 @@
 #include "common.h"
 #include "Animation/animation_player.h"
 #include "serialization/reflection.h"
-#include "Physics/collision/box_shape.h"
-#include "Physics/collision/ragdoll_char.h"
+#include "Physics/collision/body_generator.h"
 #include "Physics/physical_object.h"
 #include "Physics/world.h"
 #include "Physics/bulletutil.h"
 #include "Physics/debug_drawer.h"
 #include <iostream>
 
-ECS_REGISTER_TYPE(BoxShape, BoxShape, true, true, true, true)
+ECS_REGISTER_TYPE(BodyGenerator, BodyGenerator)
 ECS_REGISTER_TYPE(PhysicalObject, PhysicalObject)
 
 EVENT(scene=game) init_world(const ecs::OnSceneCreated &)
@@ -28,22 +27,16 @@ EVENT(scene=game) init_world(const ecs::OnSceneCreated &)
 }
 
 
-EVENT(scene=game; after=init_world) init_static_box(const ecs::OnSceneCreated &,
+EVENT(scene=game; after=init_world) init_simple_body(const ecs::OnSceneCreated &,
                                   PhysicalObject &physics,
-                                  const BoxShape &collision,
+                                  const BodyGenerator &collision,
                                   const Transform &transform)
 {
-  physics.init(ecs::get_singleton<World>(), transform, collision);
-  debug_log("Added BoxShape collision body");
+  std::vector<btTypedConstraint *> pointerHolder;
+  RigidBody * body = collision.createBody(physics, transform.get_transform(), pointerHolder);
+  physics.init(ecs::get_singleton<World>(), true, {{0, body}}, pointerHolder);
+  debug_log("Initialized simple body");
 }
-
-/*E_VENT(scene=game; after=init_world) init_ragdoll(const ecs::OnSceneCreated &,
-                                  PhysicalObject &physics,
-                                  const RagdollChar &collision,
-                                  const Transform *transform)
-{
-  physics.init(ecs::get_singleton<World>(), transform == nullptr ? Transform() : *transform, collision);
-}*/
 
 SYSTEM(stage=before_act; scene=game) physics_update()
 {
@@ -65,7 +58,7 @@ SYSTEM(stage=before_act;scene=game; after=physics_update) physics_forward_sync(
     RigidBody &body = physics.getRoot();
     btTransform tr = body.getMotionStateTransform();
 
-    transform.set_position(bt2glm(tr.getOrigin() + glm2bt(physics.shift)));
+    transform.set_position(bt2glm(tr.getOrigin() + body.getShift()));
     transform.set_rotation(getRotation(tr));
   }
 }

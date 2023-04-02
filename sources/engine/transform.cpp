@@ -1,4 +1,5 @@
 #include "transform.h"
+#include <glm/gtx/matrix_decompose.hpp>
 #include <type_registration.h>
 
 ECS_REGISTER_TYPE_AND_VECTOR(Transform, Transform, false, true);
@@ -13,11 +14,31 @@ Transform::Transform(vec3 position, vec3 rotation, vec3 scale):
 Transform::Transform():
 position(vec3(0.f)), rotation(mat4x4(1.f)), scale(vec3(1.f)), calculated(false)
 {}
+
+Transform::Transform(const mat4x4 &matrix)
+{
+  vec3 scale;
+  quat rotation;
+  vec3 translation;
+  vec3 skew;
+  vec4 perspective;
+  glm::decompose(matrix, scale, rotation, translation, skew,perspective);
+
+  this->rotation = glm::mat4_cast(glm::conjugate(rotation));
+  this->position = translation;
+  this->scale = scale;
+
+  this->calculated = true;
+  this->cachedTransform = matrix;
+  this->cached3x4Transform = transpose(cachedTransform);
+}
+
 vec3& Transform::get_position()
 {
   return position;
-  calculated = false;
 }
+
+
 const vec3& Transform::get_position() const 
 {
   return position;

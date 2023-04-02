@@ -1,5 +1,4 @@
-#ifndef MOTIONMATCHING_SHAPE_PROVIDER_H
-#define MOTIONMATCHING_SHAPE_PROVIDER_H
+#pragma once
 #include <btBulletDynamicsCommon.h>
 #include <unordered_map>
 #include <memory>
@@ -37,4 +36,3 @@ private:
   std::unordered_map<btVector3, std::unique_ptr<btCollisionShape>> boxesBySize;
 };
 
-#endif

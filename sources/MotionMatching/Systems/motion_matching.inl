@@ -6,8 +6,6 @@
 #include <camera.h>
 #include <render/material.h>
 
-#include "Physics/collision/ragdoll_char.h"
-
 AnimationIndex solve_motion_matching(
   AnimationDataBasePtr dataBase,
   const AnimationIndex &index,

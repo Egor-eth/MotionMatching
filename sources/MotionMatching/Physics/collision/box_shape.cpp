@@ -6,19 +6,18 @@
 
 
 BoxShape::BoxShape()
-  : size({0, 0, 0}), shift({0, 0, 0}), mass(), isStatic(),
+  : IBodyProvider(), size({0, 0, 0}), shift({0, 0, 0}), mass(),
     zeroInvInertiaX(false), zeroInvInertiaY(false), zeroInvInertiaZ(false),
-    angDamping(0.0f), linDamping(0.0f), restitution(0.0f), friction(3.0f)
+    angDamping(0.0f), linDamping(0.0f), restitution(0.0f), friction(0.0f)
 {
 
 }
 
-void BoxShape::init_physical_object(PhysicalObject &owner,
-                                    const Transform &tr,
-                                    std::vector<RigidBody *> &rigidBodies,
-                                    std::vector<btTypedConstraint *> &,
-                                    vec3 &glShift) const
+RigidBody *BoxShape::createBody(PhysicalObject &owner,
+                                const mat4x4 &mat,
+                                std::vector<btTypedConstraint *> &) const
 {
+  Transform tr(mat);
   btTransform transform;
 
   const vec3 sz = size / 2.0f;
@@ -30,15 +29,13 @@ void BoxShape::init_physical_object(PhysicalObject &owner,
   btCollisionShape *shape = pool.shiftedShape(pool.getBoxShape(glm2bt(size), glm2bt(tr.get_scale())),
                                               glm2bt(full_shift));
 
-  glShift = full_shift;
-
   transform.setIdentity();
   transform.setOrigin(glm2bt(tr.get_position() + shift));
   transform.setRotation(glm2bt_q(glm::quat_cast(tr.get_rotation())));
 
   btTransform relativeTr = createIdentity();
   //relativeTr.setOrigin(glm2bt(full_shift));
-  RigidBody *body = new RigidBody(owner, shape, transform, relativeTr, mass);
+  RigidBody *body = new RigidBody(owner, shape, transform, relativeTr, mass, glm2bt(full_shift));
   RigidBody &ref = *body;
   btVector3 revInv = ref->getInvInertiaDiagLocal();
   if(zeroInvInertiaX) revInv.setX(0.0f);
@@ -50,7 +47,6 @@ void BoxShape::init_physical_object(PhysicalObject &owner,
   ref->setDamping(linDamping, angDamping);
   ref->setRestitution(restitution);
 
-  rigidBodies.push_back(body);
-
+  return body;
 }
 

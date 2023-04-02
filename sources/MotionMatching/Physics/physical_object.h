@@ -1,50 +1,43 @@
 #pragma once
 #include <bullet/btBulletDynamicsCommon.h>
 #include <vector>
+#include "unordered_map"
 #include <transform.h>
 #include "rigid_body.h"
+#include "world.h"
+#include "collision/body_provider.h"
 
 class PhysicalObject {
 public:
   ~PhysicalObject();
 
-  template<typename T>
-  void init(btDiscreteDynamicsWorld *w, const Transform &tr, const T& obj)
-  {
-    world = w;
-    obj.init_physical_object(*this, tr, rigidBodies, constraints, shift);
-    for(auto body : rigidBodies) {
-      world->addRigidBody(body->get());
-    }
-    for(auto constraint : constraints) {
-      world->addConstraint(constraint, true);
-    }
-    for(auto body : rigidBodies) {
-      body->get()->setRestitution(0.0f);
-      body->get()->setFriction(0.0f);
-      body->get()->forceActivationState(ACTIVE_TAG);
-      body->get()->activate();
-    }
-  }
+  void init(World &world, bool isSimple, std::unordered_map<int, RigidBody*> rigidBodies, std::vector<btTypedConstraint*> constraints);
+
+  RigidBody &operator[](int idx);
+
+  const RigidBody &operator[](int idx) const;
+
+  const size_t numBones() const;
 
   btDiscreteDynamicsWorld *get_world() const;
-  const std::vector<RigidBody*> &getBodies() const;
+  const std::unordered_map<int, RigidBody*> &getBodies() const;
 
   RigidBody &getRoot()
   {
     return *rigidBodies[0];
   }
 
-  const btTransform &getRootTransform() {
-    return rigidBodies[0]->getTransform();
+  bool isSsimple() {
+    return simple;
   }
 
   vec3 getGlPosition() const;
+
   void setFromGlTransform(const Transform &);
 
-  vec3 shift;
 private:
+  bool simple = true;
   btDiscreteDynamicsWorld *world;
-  std::vector<RigidBody*> rigidBodies;
+  std::unordered_map<int, RigidBody*> rigidBodies;
   std::vector<btTypedConstraint*> constraints;
 };

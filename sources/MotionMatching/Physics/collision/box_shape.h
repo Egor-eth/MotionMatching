@@ -1,32 +1,24 @@
 #pragma once
-#include "serialization/reflection.h"
-#include <3dmath.h>
+#include "body_provider.h"
 #include <bullet/btBulletDynamicsCommon.h>
-#include <vector>
-#include "Physics/physical_object.h"
-#include <transform.h>
 
-class BoxShape {
+class BoxShape : public IBodyProvider {
 public:
-  REFLECT(BoxShape,
-          (vec3) (size),
-          (vec3) (shift),
-          (float) (mass),
-          (bool) (isStatic),
-          (bool) (zeroInvInertiaX),
-          (bool) (zeroInvInertiaY),
-          (bool) (zeroInvInertiaZ),
-          (float) (linDamping),
-          (float) (angDamping),
-          (float) (restitution),
-          (float) (friction))
+  vec3 size;
+  vec3 shift;
+  float mass;
+  bool zeroInvInertiaX;
+  bool zeroInvInertiaY;
+  bool zeroInvInertiaZ;
+  float linDamping;
+  float angDamping;
+  float restitution;
+  float friction;
 
   BoxShape();
 
-  void init_physical_object(PhysicalObject& owner,
-                            const Transform &,
-                            std::vector<RigidBody *> &,
-                            std::vector<btTypedConstraint *> &,
-                            vec3 &shift) const;
+  RigidBody *createBody(PhysicalObject& owner,
+                        const mat4x4 &,
+                        std::vector<btTypedConstraint *> &) const override;
 };
 

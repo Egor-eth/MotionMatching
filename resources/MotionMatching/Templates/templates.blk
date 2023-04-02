@@ -22,7 +22,8 @@ test_cube {
   is_enabled:b=true;
 
   physics:PhysicalObject {}
-  collision:BoxShape {
+  collision:BodyGenerator {
+    type:t = "box";
     size:f3 = 2, 2, 2;
     mass:f = 5;
     linDamping:f = 0.3;
@@ -36,7 +37,8 @@ test_cube2 {
     position:f3 = 1, 100, 1.4;
     scale:f3 = 1.5, 1.5, 1.5;
   }
-  collision:BoxShape {
+  collision:BodyGenerator {
+    type:t = "box";
     size:f3 = 2, 2, 2;
     mass:f = 10;
     linDamping:f = 0.3;
@@ -60,7 +62,8 @@ ground {
     position:f3 = 0, 0, 0;
   }
   physics:PhysicalObject {}
-  collision:BoxShape {
+  collision:BodyGenerator {
+    type:t = "box";
     size:f3 = 2, 2, 2;
     mass:f = 0;
     isStatic:b = true;

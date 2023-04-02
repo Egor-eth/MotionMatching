@@ -1,7 +1,7 @@
 #include "rigid_body.h"
 
-RigidBody::RigidBody(PhysicalObject &owner, btCollisionShape *shape, btTransform ownerTransform, btTransform relativeTr, float mass)
-  : body(), relativeTransform(relativeTr), owner(owner)
+RigidBody::RigidBody(PhysicalObject &owner, btCollisionShape *shape, btTransform ownerTransform, btTransform relativeTr, float mass, btVector3 shift)
+  : body(), relativeTransform(relativeTr), owner(owner), glShift(shift)
 {
   btTransform tr = ownerTransform * relativeTr;
   btVector3 localInertia(0.0f, 0.0f, 0.0f);

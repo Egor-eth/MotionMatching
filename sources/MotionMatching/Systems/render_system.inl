@@ -6,7 +6,7 @@
 #include <render/debug_arrow.h>
 #include <render/global_uniform.h>
 #include "Animation/settings.h"
-#include "Physics/collision/box_shape.h"
+#include "Physics/collision/body_generator.h"
 #include "Physics/bulletutil.h"
 #include "resources/resources.h"
 #include "profiler/profiler.h"
@@ -155,20 +155,21 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
   UniformBuffer &dynamicTransforms = get_buffer("DynamicTransforms");
   constexpr uint instanceSize = sizeof(mat3x4);
   uint instanceCount = 0;
-  QUERY()find_box_shapes([&](const BoxShape &collision, const PhysicalObject &physics)
+  QUERY()find_box_shapes([&](const BodyGenerator &collision, const PhysicalObject &physics)
                                 {
-                                  for(auto *body : physics.getBodies()) {
+                                    const RigidBody &body = physics[0];
+
                                     mat4x4 buf = mat4x4(1);
                                     mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
 
                                     Transform tm;
-                                    btTransform tr = body->getMotionStateTransform();
+                                    btTransform tr = body.getMotionStateTransform();
                                     vec3 pos = bt2glm(tr.getOrigin());
 
-                                    BoundingBox bbox = getBoundingBox(body->get());
+                                    BoundingBox bbox = getBoundingBox(body);
 
                                     vec3 size = bbox.diagonal() / 2.0f;
-                                    if(!collision.isStatic) {
+                                    if(collision.mass != 0) {
                                       pos.y += size.y;
                                     }
 
@@ -178,7 +179,6 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
 
                                     *buffer = tm.get_3x4transform();
                                     instanceCount++;
-                                  }
                                 });
   if (instanceCount == 0) return;
   const Shader &shader = get_shader("collision_shader");

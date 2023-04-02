@@ -20,6 +20,7 @@ public:
   Transform();
   Transform(vec3 position, mat4x4 rotation = mat4x4(1.f), vec3 scale = vec3(1.f));
   Transform(vec3 position, vec3 rotation, vec3 scale = vec3(1.f));
+  Transform(const mat4x4 &matrix);
 
   vec3& get_position();
   const vec3& get_position()const ;

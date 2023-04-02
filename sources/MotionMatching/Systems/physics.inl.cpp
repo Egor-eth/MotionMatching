@@ -69,27 +69,27 @@ void init_world_singl_handler(const ecs::Event &event, ecs::EntityId eid)
   ecs::perform_event((const ecs::OnSceneCreated&)event, init_world_descr, eid, init_world);
 }
 
-void init_static_box_handler(const ecs::Event &event);
-void init_static_box_singl_handler(const ecs::Event &event, ecs::EntityId eid);
+void init_simple_body_handler(const ecs::Event &event);
+void init_simple_body_singl_handler(const ecs::Event &event, ecs::EntityId eid);
 
-ecs::EventDescription init_static_box_descr(
-  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_static_box", {
+ecs::EventDescription init_simple_body_descr(
+  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_simple_body", {
   {ecs::get_type_description<PhysicalObject>("physics"), false},
-  {ecs::get_type_description<BoxShape>("collision"), false},
+  {ecs::get_type_description<BodyGenerator>("collision"), false},
   {ecs::get_type_description<Transform>("transform"), false}
 }, {
 }, {"game"},
 {},
 {"init_world"},
-init_static_box_handler, init_static_box_singl_handler, {});
+init_simple_body_handler, init_simple_body_singl_handler, {});
 
-void init_static_box_handler(const ecs::Event &event)
+void init_simple_body_handler(const ecs::Event &event)
 {
-  ecs::perform_event((const ecs::OnSceneCreated&)event, init_static_box_descr, init_static_box);
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_simple_body_descr, init_simple_body);
 }
-void init_static_box_singl_handler(const ecs::Event &event, ecs::EntityId eid)
+void init_simple_body_singl_handler(const ecs::Event &event, ecs::EntityId eid)
 {
-  ecs::perform_event((const ecs::OnSceneCreated&)event, init_static_box_descr, eid, init_static_box);
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_simple_body_descr, eid, init_simple_body);
 }
 
 

@@ -7,7 +7,7 @@ class PhysicalObject;
 
 class RigidBody {
 public:
-  RigidBody(PhysicalObject &owner, btCollisionShape * shapes, btTransform ownerTransform, btTransform relativeTr = createIdentity(), float mass = 0.0f);
+  RigidBody(PhysicalObject &owner, btCollisionShape * shapes, btTransform ownerTransform, btTransform relativeTr = createIdentity(), float mass = 0.0f, btVector3 shift = {0, 0, 0});
   ~RigidBody();
   PhysicalObject &getOwner() const;
   btTransform &getTransform();
@@ -19,7 +19,11 @@ public:
   operator const btRigidBody*() const;
   const btRigidBody *operator->() const;
   btRigidBody *operator->();
+  const btVector3 &getShift() const {
+    return glShift;
+  }
 private:
+  btVector3 glShift;
   btRigidBody* body;
   btTransform relativeTransform;
   PhysicalObject &owner;

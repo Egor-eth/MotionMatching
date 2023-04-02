@@ -1,17 +1,18 @@
 #pragma once
-#include <vector>
+#include "body_provider.h"
 #include <bullet/btBulletDynamicsCommon.h>
 #include "serialization/reflection.h"
-#include <3dmath.h>
 #include <transform.h>
+
 
 class CharacterBody {
   REFLECT(CharacterBody,
-  (vec3) (size))
+    (vec3) (size))
 
-  void init_physical_object(const Transform &,
-                            std::vector<btCollisionShape *> &,
-                            std::vector<btRigidBody *> &,
-                            std::vector<btTypedConstraint *> &) const;
+  void init_physical_object(PhysicalObject& owner,
+                            const mat4x4 & tr,
+                            std::vector<RigidBody *> & bodies,
+                            std::vector<btTypedConstraint *> & constraints,
+                            vec3 &shift) const;
 };
 
