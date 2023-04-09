@@ -8,6 +8,7 @@ ecs::SystemDescription animation_player_update_descr("animation_player_update", 
   {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false},
   {ecs::get_type_description<Settings>("settings"), false}
 }, {
+  {ecs::get_type_description<RagdollProvider>("collision"), false}
 }, {},
 {},
 {},

@@ -20,13 +20,9 @@ entity {
 }
 
 entity {
-  _template:t="test_cube";
+  _template:t="ragdoll_char";
 }
 
 entity {
   _template:t="test_cube2";
-}
-
-entity {
-  _template:t="test_cube3";
 }

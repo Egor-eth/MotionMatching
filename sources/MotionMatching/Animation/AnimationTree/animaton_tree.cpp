@@ -60,7 +60,7 @@ void AnimationTree::calculate_bone_transforms()
 }
 mat4 AnimationTree::get_bone_transform(int node) const
 {
-  return transforms[node] * data->nodes[node].meshToBone;;
+  return transforms[node] * data->nodes[node].meshToBone;
 }
 mat4 AnimationTree::get_transform(int node) const
 {

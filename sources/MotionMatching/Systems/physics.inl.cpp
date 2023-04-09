@@ -16,12 +16,30 @@ void physics_update_func()
   ecs::perform_system(physics_update_descr, physics_update);
 }
 
+void physics_forward_sync_rgdl_func();
+
+ecs::SystemDescription physics_forward_sync_rgdl_descr("physics_forward_sync_rgdl", {
+  {ecs::get_type_description<Transform>("transform"), false},
+  {ecs::get_type_description<PhysicalObject>("physics"), false},
+  {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false}
+}, {
+}, {"game"},
+{},
+{"physics_update"},
+physics_forward_sync_rgdl_func, "before_act", {}, false);
+
+void physics_forward_sync_rgdl_func()
+{
+  ecs::perform_system(physics_forward_sync_rgdl_descr, physics_forward_sync_rgdl);
+}
+
 void physics_forward_sync_func();
 
 ecs::SystemDescription physics_forward_sync_descr("physics_forward_sync", {
   {ecs::get_type_description<Transform>("transform"), false},
   {ecs::get_type_description<PhysicalObject>("physics"), false}
 }, {
+  {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false}
 }, {"game"},
 {},
 {"physics_update"},
@@ -37,7 +55,7 @@ void physics_backward_sync_func();
 ecs::SystemDescription physics_backward_sync_descr("physics_backward_sync", {
   {ecs::get_type_description<Transform>("transform"), false},
   {ecs::get_type_description<PhysicalObject>("physics"), false},
-  {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false}
+  {ecs::get_type_description<PersonController>("personController"), false}
 }, {
 }, {"game"},
 {},
@@ -57,7 +75,7 @@ ecs::EventDescription init_world_descr(
 }, {
 }, {"game"},
 {},
-{},
+{"init_animation_character"},
 init_world_handler, init_world_singl_handler, {});
 
 void init_world_handler(const ecs::Event &event)
@@ -90,6 +108,30 @@ void init_simple_body_handler(const ecs::Event &event)
 void init_simple_body_singl_handler(const ecs::Event &event, ecs::EntityId eid)
 {
   ecs::perform_event((const ecs::OnSceneCreated&)event, init_simple_body_descr, eid, init_simple_body);
+}
+
+void init_ragdoll_handler(const ecs::Event &event);
+void init_ragdoll_singl_handler(const ecs::Event &event, ecs::EntityId eid);
+
+ecs::EventDescription init_ragdoll_descr(
+  ecs::get_mutable_event_handlers<ecs::OnSceneCreated>(), "init_ragdoll", {
+  {ecs::get_type_description<AnimationPlayer>("animationPlayer"), false},
+  {ecs::get_type_description<PhysicalObject>("physics"), false},
+  {ecs::get_type_description<RagdollProvider>("collision"), false},
+  {ecs::get_type_description<Transform>("transform"), false}
+}, {
+}, {"game"},
+{},
+{"init_world"},
+init_ragdoll_handler, init_ragdoll_singl_handler, {});
+
+void init_ragdoll_handler(const ecs::Event &event)
+{
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_ragdoll_descr, init_ragdoll);
+}
+void init_ragdoll_singl_handler(const ecs::Event &event, ecs::EntityId eid)
+{
+  ecs::perform_event((const ecs::OnSceneCreated&)event, init_ragdoll_descr, eid, init_ragdoll);
 }
 
 

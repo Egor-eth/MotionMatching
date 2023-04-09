@@ -34,15 +34,16 @@ test_cube {
 test_cube2 {
   _extends:t = "test_cube";
   transform:Transform {
-    position:f3 = 1, 100, 1.4;
+    position:f3 = 0, 0, 0;
     scale:f3 = 1.5, 1.5, 1.5;
   }
   collision:BodyGenerator {
     type:t = "box";
     size:f3 = 2, 2, 2;
-    mass:f = 10;
+    mass:f = 50;
     linDamping:f = 0.3;
     angDamping:f = 0.2;
+    friction:f = 0.2;
   }
 }
 

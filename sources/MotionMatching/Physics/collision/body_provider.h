@@ -12,5 +12,5 @@ struct IBodyProvider
 
   virtual RigidBody *createBody(PhysicalObject& owner,
                                 const mat4x4 &mat,
-                                std::vector<btTypedConstraint *> &pointerHolder) const {};
+                                std::vector<btTypedConstraint *> &pointerHolder) const = 0;
 };

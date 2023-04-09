@@ -21,7 +21,6 @@ public:
   Transform(vec3 position, mat4x4 rotation = mat4x4(1.f), vec3 scale = vec3(1.f));
   Transform(vec3 position, vec3 rotation, vec3 scale = vec3(1.f));
   Transform(const mat4x4 &matrix);
-
   vec3& get_position();
   const vec3& get_position()const ;
   const mat4x4 &get_transform() const;
@@ -36,6 +35,7 @@ public:
   void set_rotation(const glm::quat &q);
   void set_position(const vec3 position);
   void set_scale(const vec3 scale);
+  void set_from_mat(const mat4 &mat);
   std::vector<mat4>& get_bones()
   {
     return bones;

@@ -21,8 +21,8 @@ class AnimationTree
 {
 private:
   const AnimationTreeData *data;
-  std::vector<mat4> transforms;
 public:
+  std::vector<mat4> transforms;
   std::vector<AnimationNode> nodes;
   AnimationTree(const AnimationTreeData *tree_data);
   AnimationTree() = default;

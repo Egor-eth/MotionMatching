@@ -108,3 +108,21 @@ void Transform::set_scale(const vec3 scale)
   this->scale = scale;
   calculated = false;
 }
+
+void Transform::set_from_mat(const mat4 &mat)
+{
+  vec3 scale;
+  quat rotation;
+  vec3 translation;
+  vec3 skew;
+  vec4 perspective;
+  glm::decompose(mat, scale, rotation, translation, skew,perspective);
+
+  this->rotation = glm::mat4_cast(glm::conjugate(rotation));
+  this->position = translation;
+  this->scale = scale;
+
+  this->calculated = true;
+  this->cachedTransform = mat;
+  this->cached3x4Transform = transpose(cachedTransform);
+}

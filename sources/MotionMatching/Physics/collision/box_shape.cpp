@@ -1,7 +1,7 @@
 #include "box_shape.h"
 #include "Physics/rigid_body.h"
 #include "Physics/bulletutil.h"
-#include "Physics/collision/shape_provider.h"
+#include "Physics/collision/shape_pool.h"
 #include <ecs_core.h>
 
 

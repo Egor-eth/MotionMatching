@@ -155,30 +155,34 @@ SYSTEM(stage=render; after=process_mesh_position; before=render_sky_box; scene=g
   UniformBuffer &dynamicTransforms = get_buffer("DynamicTransforms");
   constexpr uint instanceSize = sizeof(mat3x4);
   uint instanceCount = 0;
-  QUERY()find_box_shapes([&](const BodyGenerator &collision, const PhysicalObject &physics)
+  QUERY()find_box_shapes([&](const PhysicalObject &physics)
                                 {
-                                    const RigidBody &body = physics[0];
+                                    for(auto &p : physics.getBodies()) {
+                                      RigidBody &body = *p.second;
+                                      mat4x4 buf = mat4x4(1);
+                                      mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
 
-                                    mat4x4 buf = mat4x4(1);
-                                    mat3x4 *buffer = (mat3x4*)dynamicTransforms.get_buffer(instanceCount * instanceSize, instanceSize);
+                                      Transform tm;
+                                      btTransform tr = body.getMotionStateTransform();
+                                      vec3 pos = bt2glm(tr.getOrigin());
 
-                                    Transform tm;
-                                    btTransform tr = body.getMotionStateTransform();
-                                    vec3 pos = bt2glm(tr.getOrigin());
+                                      BoundingBox bbox = getBoundingBox(body);
 
-                                    BoundingBox bbox = getBoundingBox(body);
+                                      vec3 size = bbox.diagonal() / 2.0f;
+                                      if(!body->isStaticObject()) {
+                                        pos.y += size.y;
+                                      }
+                                      //vec3 shift = bt2glm(body.getShift());
+                                      //shift = glm::mat3_cast(getRotation(tr)) * shift;
+                                      //pos -= shift;
 
-                                    vec3 size = bbox.diagonal() / 2.0f;
-                                    if(collision.mass != 0) {
-                                      pos.y += size.y;
+                                      tm.set_position(pos);
+                                      tm.set_rotation(getRotation(tr));
+                                      tm.set_scale(size);
+
+                                      *buffer = tm.get_3x4transform();
+                                      instanceCount++;
                                     }
-
-                                    tm.set_position(pos);
-                                    tm.set_rotation(getRotation(tr));
-                                    tm.set_scale(size);
-
-                                    *buffer = tm.get_3x4transform();
-                                    instanceCount++;
                                 });
   if (instanceCount == 0) return;
   const Shader &shader = get_shader("collision_shader");

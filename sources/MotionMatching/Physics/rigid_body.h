@@ -9,8 +9,13 @@ class RigidBody {
 public:
   RigidBody(PhysicalObject &owner, btCollisionShape * shapes, btTransform ownerTransform, btTransform relativeTr = createIdentity(), float mass = 0.0f, btVector3 shift = {0, 0, 0});
   ~RigidBody();
+
+  RigidBody(const RigidBody&) = delete;
+  RigidBody &operator=(const RigidBody&) = delete;
+
   PhysicalObject &getOwner() const;
   btTransform &getTransform();
+  const btTransform &getTransform() const;
   btTransform getMotionStateTransform() const;
   const btTransform &getRelativeTransform() const;
   btRigidBody *get();

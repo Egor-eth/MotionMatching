@@ -5,9 +5,12 @@
 #include "Animation/settings.h"
 #include "Animation/third_person_controller.h"
 #include <render/mesh.h>
+#include <fstream>
+#include <unordered_set>
+#include "Physics/collision/ragdoll_provider.h"
 
 
-SYSTEM(stage=act) animation_player_update(
+SYSTEM(stage=act; require_not=RagdollProvider collision) animation_player_update(
   AnimationPlayer &animationPlayer,
   Settings &settings)
 {
@@ -25,7 +28,25 @@ SYSTEM(stage=act) animation_player_update(
   animationPlayer.tree.calculate_bone_transforms();
 }
 
-EVENT(scene=game, editor) init_animation_character(
+void printNodeTree(int &i, const AnimationTree &tree, const std::string &parent, const AnimationNodeData &data, std::ostream &file, const std::unordered_set<std::string> &ignore = {})
+{
+  file << i++ << "> " << data.name;
+  if(data.parent < tree.nodes.size()) {
+    file << "(" << tree.nodes.at(data.parent).get_name() << ")" << std::endl;
+    vec3 len = data.translation;
+    file << "\tLen = (" << len.x << ", " << len.y << ", " << len.z << ")";
+    vec3 pos = tree.nodes.at(data.parent).get_data().translation;
+    file << "\tPos = (" << pos.x << ", " << pos.y << ", " << pos.z << ")";
+  }
+  file << std::endl;
+  if(!ignore.contains(data.name)) {
+    for (int n: data.childs) {
+        printNodeTree(i, tree, data.name, tree.nodes[n].get_data(), file, ignore);
+    }
+  }
+}
+
+EVENT(scene=game, editor) init_animation_character (
   const ecs::OnEntityCreated &,
   AnimationPlayer &animationPlayer)
 {
@@ -45,6 +66,13 @@ EVENT(scene=game, editor) init_animation_character(
   AnimationTree &tree = animationPlayer.tree;
   tree.set_cadr(animationPlayer.currentCadr);
   tree.calculate_bone_transforms();
+
+  std::ofstream file("logs/bones.txt");
+  file.precision(4);
+  int i = 0;
+  printNodeTree(i, tree, "", tree.nodes[0].get_data(), file, {"LeftHand", "RightHand"});
+  file.close();
+
 }
 
 SYSTEM(scene=game, editor; stage=act) update_bone_remap(

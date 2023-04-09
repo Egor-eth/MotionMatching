@@ -56,7 +56,8 @@ quat getRotation(const btTransform &transform) {
 BoundingBox getBoundingBox(const btRigidBody *body)
 {
   btVector3 a, b;
-  body->getAabb(a, b);
+  body->getCollisionShape()->getAabb(createIdentity(), a, b);
+  //body->getAabb(a, b);
   return {bt2glm(a), bt2glm(b)};
 }
 
